@@ -8,7 +8,9 @@ object BasketContract {
         val list: List<MovieCartModel> = emptyList(),
     )
 
-    sealed class UiAction
+    sealed interface UiAction {
+        data class OnDeleteButtonClick(val movieCartModel: MovieCartModel) : UiAction
+    }
 
     sealed interface UiEffect {
         data class ShowToast(val message: String) : UiEffect

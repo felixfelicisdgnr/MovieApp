@@ -24,7 +24,7 @@ interface MainService {
         @Field("director") director: String,
         @Field("description") description: String,
         @Field("orderAmount") orderAmount: Int = 1,
-        @Field("userName") userName: String = "doganur_aydeniz",
+        @Field("userName") userName: String = "doganur_aydeniz", // bunu bir düşün const val olarak tanımlamak mantıklı mı
     ): BaseResponse
 
     @POST("movies/getMovieCart.php")
@@ -37,6 +37,6 @@ interface MainService {
     @FormUrlEncoded
     suspend fun deleteMovieCart(
         @Field("cartId") cartId: Int,
-        @Field("userName") userName: String
+        @Field("userName") userName: String = "doganur_aydeniz"
     ): BaseResponse
 }

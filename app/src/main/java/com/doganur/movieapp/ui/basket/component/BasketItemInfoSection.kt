@@ -29,7 +29,7 @@ import com.doganur.movieapp.ui.theme.UrbanistRegularTextStyle
 
 @Composable
 fun BasketItemInfoSection(
-    imageUrl: String,
+    image: String,
     movieTitle: String,
     moviePrice: String,
 ) {
@@ -47,7 +47,7 @@ fun BasketItemInfoSection(
                 .clip(RoundedCornerShape(8.dp))
                 .background(Color.Gray)
                 .width(100.dp),
-            model = imageUrl,
+            model = image,
             contentDescription = "stringResource(id = R.string.cont_desc_image_movie)",
             contentScale = ContentScale.Crop
         )
@@ -82,7 +82,7 @@ fun BasketItemInfoSection(
 @Composable
 fun BasketItemInfoSectionPreview() {
     BasketItemInfoSection(
-        imageUrl = "https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg",
+        image = "https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg",
         movieTitle = "Harry Potter",
         moviePrice = "10.00"
     )

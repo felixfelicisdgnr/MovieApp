@@ -56,13 +56,31 @@ class MainRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getBasket(
-        userName: String,
+        username: String,
     ): Resource<List<MovieCartModel>> {
         return try {
             val response = mainService.getMovieCart(
                 userName = "doganur_aydeniz"
             )
             Resource.Success(response.mapToMovieCartModelList())
+        } catch (e: Exception) {
+            Resource.Fail(e.message.orEmpty())
+        }
+    }
+
+    override suspend fun deleteMovieCart(
+        cartId: Int,
+    ): Resource<String> {
+        return try {
+            val response = mainService.deleteMovieCart(
+                cartId = cartId
+            )
+
+            if (response.success == 1) {
+                Resource.Success(response.message)
+            } else {
+                Resource.Fail(response.message)
+            }
         } catch (e: Exception) {
             Resource.Fail(e.message.orEmpty())
         }

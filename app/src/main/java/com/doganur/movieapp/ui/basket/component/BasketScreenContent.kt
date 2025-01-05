@@ -10,7 +10,7 @@ import com.doganur.movieapp.domain.model.MovieCartModel
 @Composable
 fun BasketScreenContent(
     basketList: List<MovieCartModel> = emptyList(),
-    onDeleteButtonClick: (MovieCartModel) -> Unit = {},
+    onDeleteButtonClick: (MovieCartModel) -> Unit,
     onIncreaseButtonClick: (MovieCartModel) -> Unit = {},
     onDecreaseButtonClick: (MovieCartModel) -> Unit = {}
 ) {

@@ -35,5 +35,5 @@ data class MovieCart(
     var orderAmount: Int? = null,
 
     @SerializedName("userName")
-    var userName: String = "doganur_aydeniz"
+    var username: String = "doganur_aydeniz"
 )

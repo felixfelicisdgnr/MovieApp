@@ -20,4 +20,8 @@ interface MainRepository {
     suspend fun getBasket(
         username: String,
     ): Resource<List<MovieCartModel>>
+
+    suspend fun deleteMovieCart(
+        cartId: Int,
+    ): Resource<String>
 }

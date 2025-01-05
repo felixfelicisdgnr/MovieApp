@@ -9,7 +9,7 @@ fun MovieCartResponse?.mapToMovieCartModelList(): List<MovieCartModel> {
         MovieCartModel(
             cartId = movieCart.cartId.orZero(),
             name = movieCart.name.orEmpty(),
-            image = "http://kasimadalan.pe.hu/movies/images/${movieCart.image}",
+            image = movieCart.image.orEmpty(),
             price = movieCart.price.orZero(),
             priceStr = "₺ ${movieCart.price}",
             category = movieCart.category.orEmpty(),
@@ -18,8 +18,7 @@ fun MovieCartResponse?.mapToMovieCartModelList(): List<MovieCartModel> {
             director = movieCart.director.orEmpty(),
             description = movieCart.description.orEmpty(),
             orderAmount = movieCart.orderAmount.orZero(),
-            orderAmountStr = "${movieCart.orderAmount}",
-            username = "doganur_aydeniz"
+            orderAmountStr = "${movieCart.orderAmount}"
         )
     }.orEmpty()
 }

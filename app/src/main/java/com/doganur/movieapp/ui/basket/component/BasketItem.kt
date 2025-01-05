@@ -39,7 +39,7 @@ fun BasketItem(
         )
     ) {
         BasketItemInfoSection(
-            imageUrl = image,
+            image = image,
             movieTitle = name,
             moviePrice = unitPrice
         )
