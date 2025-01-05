@@ -1,7 +1,8 @@
-package com.doganur.movieapp.ui.home
+package com.doganur.movieapp.ui.home.preview
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import com.doganur.movieapp.domain.model.MovieModel
+import com.doganur.movieapp.ui.home.HomeContract
 
 class HomeScreenPreviewProvider : PreviewParameterProvider<HomeContract.UiState> {
     override val values: Sequence<HomeContract.UiState>
