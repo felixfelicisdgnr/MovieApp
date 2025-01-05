@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="app_name">MoviesApp</string>
+    <string name="cont_desc_image_movie">Movie image</string>
+    <string name="cont_desc_icon_add">Add icon</string>
+    <string name="cont_desc_icon_delete">Delete icon</string>
+    <string name="cont_desc_icon_decrease">Decrease icon</string>
+    <string name="amount">Amount</string>
+    <string name="unit_price">Unit Price</string>
+</resources>

@@ -1,12 +1,18 @@
 package com.doganur.movieapp.ui.basket
 
+import com.doganur.movieapp.domain.model.MovieCartModel
+
 object BasketContract {
     data class UiState(
         val isLoading: Boolean = false,
-        val list: List<String> = emptyList(),
+        val list: List<MovieCartModel> = emptyList(),
     )
 
-    sealed class UiAction
+    sealed interface UiAction {
+        data class OnDeleteButtonClick(val movieCartModel: MovieCartModel) : UiAction
+    }
 
-    sealed class UiEffect
+    sealed interface UiEffect {
+        data class ShowToast(val message: String) : UiEffect
+    }
 }

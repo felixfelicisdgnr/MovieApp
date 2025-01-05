@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import com.doganur.movieapp.navigation.NavigationGraph
 import com.doganur.movieapp.navigation.Screen
 import dagger.hilt.android.AndroidEntryPoint
-import com.doganur.movieapp.ui.theme.MyappTheme
+import com.doganur.movieapp.ui.theme.AppTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MyappTheme {
+            AppTheme {
                 val navController = rememberNavController()
                 val startDestination = Screen.Home
                 

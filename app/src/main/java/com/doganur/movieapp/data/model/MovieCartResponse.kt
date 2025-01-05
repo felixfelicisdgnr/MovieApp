@@ -1,10 +1,8 @@
 package com.doganur.movieapp.data.model
 
-import com.doganur.movieapp.data.model.MovieCart
 import com.google.gson.annotations.SerializedName
 
-data class MovieCartAnswer(
+data class MovieCartResponse(
     @SerializedName("movie_cart")
-    var movie_cart: List<MovieCart>)
-{
-}
+    var movieCartList: List<MovieCart>? = null
+)

@@ -1,8 +1,8 @@
 package com.doganur.movieapp.data.source.remote
 
-import com.doganur.movieapp.data.model.CRUDAnswer
+import com.doganur.movieapp.data.model.BaseResponse
 import com.doganur.movieapp.data.model.GetAllMoviesResponse
-import com.doganur.movieapp.data.model.MovieCartAnswer
+import com.doganur.movieapp.data.model.MovieCartResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -24,17 +24,19 @@ interface MainService {
         @Field("director") director: String,
         @Field("description") description: String,
         @Field("orderAmount") orderAmount: Int = 1,
-        @Field("userName") userName: String = "doganur_aydeniz",
-    ): CRUDAnswer
+        @Field("userName") userName: String = "doganur_aydeniz", // bunu bir düşün const val olarak tanımlamak mantıklı mı
+    ): BaseResponse
 
     @POST("movies/getMovieCart.php")
     @FormUrlEncoded
-    suspend fun getMovieCart(@Field("userName") userName: String): MovieCartAnswer
+    suspend fun getMovieCart(
+        @Field("userName") userName: String
+    ): MovieCartResponse
 
     @POST("movies/deleteMovie.php")
     @FormUrlEncoded
     suspend fun deleteMovieCart(
         @Field("cartId") cartId: Int,
-        @Field("userName") userName: String
-    ): CRUDAnswer
+        @Field("userName") userName: String = "doganur_aydeniz"
+    ): BaseResponse
 }
