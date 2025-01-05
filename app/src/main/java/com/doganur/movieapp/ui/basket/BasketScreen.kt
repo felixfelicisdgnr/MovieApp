@@ -24,7 +24,9 @@ fun BasketScreen(
         uiState.list.isEmpty() -> EmptyScreen()
         else -> BasketScreenContent(
             basketList = uiState.list,
-            onDeleteButtonClick = { onAction(UiAction.OnDeleteButtonClick(it)) }
+            onDeleteButtonClick = { onAction(UiAction.OnDeleteButtonClick(it)) },
+            onIncreaseButtonClick = { onAction(UiAction.OnIncreaseButtonClick(it)) },
+            onDecreaseButtonClick = { onAction(UiAction.OnDecreaseButtonClick(it)) },
         )
     }
 }

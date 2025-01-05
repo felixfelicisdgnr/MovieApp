@@ -38,6 +38,8 @@ class BasketViewModel @Inject constructor(
     fun onAction(uiAction: UiAction) {
         when (uiAction) {
             is UiAction.OnDeleteButtonClick -> deleteMovieCart(uiAction.movieCartModel.cartId)
+            is UiAction.OnIncreaseButtonClick -> increaseMovieAmount(uiAction.movieCartModel.cartId)
+            is UiAction.OnDecreaseButtonClick -> decreaseMovieAmount(uiAction.movieCartModel.cartId)
         }
     }
 
@@ -79,6 +81,18 @@ class BasketViewModel @Inject constructor(
                 emitUiEffect(UiEffect.ShowToast(message = result.message))
             }
         }
+    }
+
+    private fun increaseMovieAmount(
+        cartId: Int
+    ) = viewModelScope.launch {
+
+    }
+
+    private fun decreaseMovieAmount(
+        cartId: Int
+    ) = viewModelScope.launch {
+
     }
 
     private fun updateUiState(block: UiState.() -> UiState) {
