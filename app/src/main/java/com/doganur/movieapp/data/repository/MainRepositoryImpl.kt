@@ -3,7 +3,9 @@ package com.doganur.movieapp.data.repository
 import com.doganur.movieapp.common.Resource
 import com.doganur.movieapp.data.source.local.MainDao
 import com.doganur.movieapp.data.source.remote.MainService
+import com.doganur.movieapp.domain.mapper.mapToMovieCartModelList
 import com.doganur.movieapp.domain.mapper.mapToMovieModelList
+import com.doganur.movieapp.domain.model.MovieCartModel
 import com.doganur.movieapp.domain.model.MovieModel
 import com.doganur.movieapp.domain.repository.MainRepository
 import javax.inject.Inject
@@ -48,6 +50,19 @@ class MainRepositoryImpl @Inject constructor(
             } else {
                 Resource.Fail(response.message)
             }
+        } catch (e: Exception) {
+            Resource.Fail(e.message.orEmpty())
+        }
+    }
+
+    override suspend fun getBasket(
+        userName: String,
+    ): Resource<List<MovieCartModel>> {
+        return try {
+            val response = mainService.getMovieCart(
+                userName = "doganur_aydeniz"
+            )
+            Resource.Success(response.mapToMovieCartModelList())
         } catch (e: Exception) {
             Resource.Fail(e.message.orEmpty())
         }

@@ -14,6 +14,8 @@ import com.doganur.movieapp.ui.components.LoadingBar
 import com.doganur.movieapp.ui.basket.BasketContract.UiAction
 import com.doganur.movieapp.ui.basket.BasketContract.UiEffect
 import com.doganur.movieapp.ui.basket.BasketContract.UiState
+import com.doganur.movieapp.ui.basket.component.BasketScreenContent
+import com.doganur.movieapp.ui.basket.preview.BasketScreenPreviewProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 
@@ -25,20 +27,9 @@ fun BasketScreen(
 ) {
     when {
         uiState.isLoading -> LoadingBar()
-        uiState.list.isNotEmpty() -> EmptyScreen()
-        else -> BasketContent()
-    }
-}
-
-@Composable
-fun BasketContent() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            text = "Basket Content",
-            fontSize = 24.sp,
+        uiState.list.isEmpty() -> EmptyScreen()
+        else -> BasketScreenContent(
+            basketList = uiState.list,
         )
     }
 }

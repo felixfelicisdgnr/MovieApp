@@ -2,37 +2,37 @@ package com.doganur.movieapp.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieCart (
+data class MovieCart(
 
     @SerializedName("cartId")
-    var cartId: Int,
+    var cartId: Int? = null,
 
     @SerializedName("name")
-    var name: String,
+    var name: String? = null,
 
     @SerializedName("image")
-    var image: String,
+    var image: String? = null,
 
     @SerializedName("price")
-    var price: Int,
+    var price: Int? = null,
 
     @SerializedName("category")
-    var category: String,
+    var category: String? = null,
 
     @SerializedName("rating")
-    var rating: Double,
+    var rating: Double? = null,
 
     @SerializedName("year")
-    var year: Int,
+    var year: Int? = null,
 
     @SerializedName("director")
-    var director: String,
+    var director: String? = null,
 
     @SerializedName("description")
-    var description: String,
+    var description: String? = null,
 
     @SerializedName("orderAmount")
-    var orderAmount: Int,
+    var orderAmount: Int? = null,
 
     @SerializedName("userName")
     var userName: String = "doganur_aydeniz"
