@@ -1,5 +1,8 @@
 package com.doganur.movieapp.domain.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class MovieModel(
     val id: Int,
     val name: String,
