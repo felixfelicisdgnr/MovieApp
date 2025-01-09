@@ -1,6 +1,7 @@
 package com.doganur.movieapp.presentation.moviedetail.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -22,7 +23,8 @@ import com.doganur.movieapp.presentation.theme.AppTheme
 
 @Composable
 fun SameMovieCategoriesSection(
-    categoryList: List<MovieModel>
+    categoryList: List<MovieModel>,
+    onMovieClick : (MovieModel) -> Unit
 ) {
     LazyRow(
         modifier = Modifier
@@ -33,14 +35,17 @@ fun SameMovieCategoriesSection(
     ) {
         items(categoryList) { movie ->
             AsyncImage(
+                model = movie.image,
+                contentDescription = movie.name,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .clip(shape = RoundedCornerShape(10.dp))
                     .background(Color.Green)
                     .width(130.dp)
-                    .height(180.dp),
-                model = movie.image,
-                contentDescription = movie.name,
-                contentScale = ContentScale.Crop
+                    .height(180.dp)
+                    .clickable {
+                        onMovieClick(movie)
+                    }
             )
         }
     }
@@ -128,7 +133,8 @@ fun SameMovieCategoriesSectionPreview() {
 
     AppTheme {
         SameMovieCategoriesSection(
-            categoryList = categoryList
+            categoryList = categoryList,
+            onMovieClick = {}
         )
     }
 

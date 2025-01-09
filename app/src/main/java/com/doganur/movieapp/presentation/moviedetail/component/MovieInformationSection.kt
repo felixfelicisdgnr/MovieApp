@@ -38,15 +38,13 @@ fun MovieInformationSection(
 ) {
     Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .background(Color.LightGray),
+            .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .background(Color.Gray),
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceAround,
             verticalAlignment = Alignment.Top
         ) {
