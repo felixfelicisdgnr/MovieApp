@@ -27,9 +27,7 @@ fun BasketList(
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
-            .background(PrimaryColor)
-            .height(700.dp)
-            .padding(all = 10.dp),
+            .height(700.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {

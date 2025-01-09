@@ -12,37 +12,41 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = PrimaryColor,
+    primary = Color.Black,
+    onPrimary = Color.White,
     secondary = SecondaryColor,
-    tertiary = Color.Yellow
+    onSecondary = Color.White,
+    background = BackgroundColor,
+    onBackground = Color.White,
+    surface = SurfaceColor,
+    onSurface = OnSurfaceColor,
+    error = ErrorColor
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = PrimaryColor,
+    onPrimary = Color.White,
     secondary = SecondaryColor,
-    tertiary = Color.Green
+    onSecondary = Color.White,
+    background = BackgroundColor,
+    onBackground = Color.White,
+    surface = SurfaceColor,
+    onSurface = OnSurfaceColor,
+    error = ErrorColor,
 )
 
 @Composable
 fun AppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
         content = content
     )
 }

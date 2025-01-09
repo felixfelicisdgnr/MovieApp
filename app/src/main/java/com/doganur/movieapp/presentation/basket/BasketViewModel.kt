@@ -3,8 +3,10 @@ package com.doganur.movieapp.presentation.basket
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.doganur.movieapp.common.Resource
+import com.doganur.movieapp.domain.usecase.AddBasketUseCase
 import com.doganur.movieapp.domain.usecase.DeleteMovieCartUseCase
 import com.doganur.movieapp.domain.usecase.GetBasketUseCase
+import com.doganur.movieapp.domain.usecase.GetGroupedBasketUseCase
 import com.doganur.movieapp.presentation.basket.BasketContract.UiAction
 import com.doganur.movieapp.presentation.basket.BasketContract.UiEffect
 import com.doganur.movieapp.presentation.basket.BasketContract.UiState
@@ -23,6 +25,8 @@ import javax.inject.Inject
 class BasketViewModel @Inject constructor(
     private val getBasketUseCase: GetBasketUseCase,
     private val deleteMovieCartUseCase: DeleteMovieCartUseCase,
+    private val addBasketUseCase: AddBasketUseCase,
+    private val getGroupedBasketUseCase: GetGroupedBasketUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(UiState())
@@ -47,21 +51,21 @@ class BasketViewModel @Inject constructor(
         username: String = "doganur_aydeniz"
     ) = viewModelScope.launch {
 
-        val result = getBasketUseCase(
-            username = username
-        )
+        updateUiState { copy(isLoading = true) }
 
-        when (result) {
+        when (val result = getGroupedBasketUseCase(username)) {
             is Resource.Success -> {
                 updateUiState {
                     copy(
-                        list = result.data
+                        list = result.data,
+                        isLoading = false
                     )
                 }
             }
 
             is Resource.Fail -> {
                 emitUiEffect(UiEffect.ShowToast(message = result.message))
+                updateUiState { copy(isLoading = false) }
             }
         }
     }
@@ -86,13 +90,51 @@ class BasketViewModel @Inject constructor(
     private fun increaseMovieAmount(
         cartId: Int
     ) = viewModelScope.launch {
+        // Mevcut filmi ekle
+        val currentMovie = _uiState.value.list.find { it.cartId == cartId }
 
+        currentMovie?.let {
+            val result = addBasketUseCase(
+                name = it.name,
+                price = it.price,
+                image = it.image,
+                category = it.category,
+                rating = it.rating,
+                year = it.year,
+                director = it.director,
+                description = it.description,
+            )
+
+            when (result) {
+                is Resource.Success -> {
+                    getBasket() // Sepeti yenile
+                    emitUiEffect(UiEffect.ShowToast(message = "Miktar artırıldı"))
+                }
+                is Resource.Fail -> {
+                    emitUiEffect(UiEffect.ShowToast(message = result.message))
+                }
+            }
+        }
     }
 
     private fun decreaseMovieAmount(
         cartId: Int
     ) = viewModelScope.launch {
+        val currentMovie = _uiState.value.list.find { it.cartId == cartId }
 
+        currentMovie?.let {
+            if (it.orderAmount > 1) {
+                // Eğer miktar 1'den büyükse, bir tane sil
+                deleteMovieCart(cartId)
+                getBasket() // Sepeti yenile
+                emitUiEffect(UiEffect.ShowToast(message = "Miktar azaltıldı"))
+            } else {
+                // Eğer miktar 1 ise, ürünü tamamen sil
+                deleteMovieCart(cartId)
+                getBasket() // Sepeti yenile
+                emitUiEffect(UiEffect.ShowToast(message = "Ürün sepetten kaldırıldı"))
+            }
+        }
     }
 
     private fun updateUiState(block: UiState.() -> UiState) {
