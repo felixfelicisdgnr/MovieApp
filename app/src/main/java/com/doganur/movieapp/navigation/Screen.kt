@@ -24,7 +24,4 @@ sealed interface Screen {
 
     @Serializable
     data object Favorite : Screen
-
-    @Serializable
-    data class Profile(val id: Int) : Screen
 }
