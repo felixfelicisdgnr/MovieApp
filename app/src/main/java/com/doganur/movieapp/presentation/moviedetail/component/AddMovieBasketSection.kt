@@ -33,7 +33,7 @@ fun AddMovieBasketSection(
             modifier = Modifier,
             text = price + "₺",
             style = UrbanistBoldTextStyle.copy(
-                fontSize = 30.sp,
+                fontSize = 26.sp,
                 color = BlackColor
             )
         )

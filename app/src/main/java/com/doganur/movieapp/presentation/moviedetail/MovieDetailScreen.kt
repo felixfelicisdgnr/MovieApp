@@ -2,12 +2,14 @@ package com.doganur.movieapp.presentation.moviedetail
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.unit.dp
 import com.doganur.movieapp.common.EMPTY
 import com.doganur.movieapp.common.base.components.EmptyScreen
 import com.doganur.movieapp.common.base.components.LoadingBar
@@ -42,7 +44,8 @@ fun MovieDetailScreen(
 
     Box(
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .padding(all = 5.dp),
         contentAlignment = Alignment.Center,
     ) {
         if (uiState.movieId == null

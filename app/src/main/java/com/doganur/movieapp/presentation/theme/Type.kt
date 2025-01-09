@@ -23,6 +23,14 @@ val UrbanistMediumTextStyle = TextStyle(
     letterSpacing = 0.5.sp
 )
 
+val UrbanistSemiBoldTextStyle = TextStyle(
+    fontFamily = FontFamily(Font(R.font.urbanistsemibold)),
+    fontWeight = FontWeight.Normal,
+    fontSize = 16.sp,
+    lineHeight = 24.sp,
+    letterSpacing = 0.5.sp
+)
+
 val UrbanistBoldTextStyle = TextStyle(
     fontFamily = FontFamily(Font(R.font.urbanistbold)),
     fontWeight = FontWeight.Normal,
@@ -31,10 +39,3 @@ val UrbanistBoldTextStyle = TextStyle(
     letterSpacing = 0.5.sp
 )
 
-val UrbanistSemiBoldTextStyle = TextStyle(
-    fontFamily = FontFamily(Font(R.font.urbanistsemibold)),
-    fontWeight = FontWeight.Normal,
-    fontSize = 16.sp,
-    lineHeight = 24.sp,
-    letterSpacing = 0.5.sp
-)

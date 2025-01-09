@@ -53,7 +53,7 @@ fun MovieInformationChipsItem(
             Text(
                 text = text,
                 style = UrbanistSemiBoldTextStyle.copy(
-                    fontSize = 16.sp
+                    fontSize = 12.sp
                 ),
                 color = BlackColor
             )

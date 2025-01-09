@@ -60,8 +60,6 @@ fun MovieInformationChipsMenu(
             },
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        item { Spacer(modifier = Modifier.padding(start = 1.dp)) }
-
         item {
             MovieInformationChipsItem(
                 text = category,

@@ -3,22 +3,18 @@ package com.doganur.movieapp.presentation.moviedetail.component
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
-import com.doganur.movieapp.R
+import androidx.compose.ui.unit.dp
 import com.doganur.movieapp.domain.model.MovieModel
 import com.doganur.movieapp.presentation.theme.AppTheme
-import com.doganur.movieapp.presentation.theme.BlackColor
-import com.doganur.movieapp.presentation.theme.UrbanistBoldTextStyle
 
 @Composable
 fun MovieDetailScreenContent(
-    movieId : Int,
+    movieId: Int,
     name: String,
     image: String,
     category: String,
@@ -26,64 +22,51 @@ fun MovieDetailScreenContent(
     year: String,
     director: String,
     description: String,
-    price : String,
-    similarMovies : List<MovieModel>,
+    price: String,
+    similarMovies: List<MovieModel>,
     addOnBasketButtonClick: (MovieModel) -> Unit,
     onSimilarMovieClick: (MovieModel) -> Unit
 ) {
     Column(
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .padding(all = 10.dp),
         horizontalAlignment = Alignment.Start,
-        verticalArrangement = Arrangement.Top
+        verticalArrangement = Arrangement.SpaceBetween
     ) {
         MovieInformationSection(
             name = name,
             image = image,
-            category = category,
-            rating = rating,
-            year = year,
-            director = director,
-            description = description
-        )
-
-
-        AddMovieBasketSection(
-            price = price,
-            addBasketButtonClick = addOnBasketButtonClick,
-            movieModel = MovieModel(
-                id = movieId,
-                name = name,
-                image = image,
-                category = category,
-                rating = rating.toDouble(),
-                year = year.toInt(),
-                director = director,
-                description = description,
-                price = price.toInt(),
-                priceStr = price
-            )
-        )
-
-        MovieInformationChipsMenu(
+            description = description,
             category = category,
             rating = rating,
             year = year,
             director = director
         )
 
-        Text(
-            text = stringResource(id = R.string.similar_movies),
-            style = UrbanistBoldTextStyle.copy(
-                fontSize = 24.sp,
-                color = BlackColor
+        Column {
+            AddMovieBasketSection(
+                price = price,
+                addBasketButtonClick = addOnBasketButtonClick,
+                movieModel = MovieModel(
+                    id = movieId,
+                    name = name,
+                    image = image,
+                    category = category,
+                    rating = rating.toDouble(),
+                    year = year.toInt(),
+                    director = director,
+                    description = description,
+                    price = price.toInt(),
+                    priceStr = price
+                )
             )
-        )
 
-        SameMovieCategoriesSection(
-            categoryList = similarMovies,
-            onMovieClick = onSimilarMovieClick
-        )
+            SameMovieCategoriesSection(
+                categoryList = similarMovies,
+                onMovieClick = onSimilarMovieClick
+            )
+        }
     }
 }
 
