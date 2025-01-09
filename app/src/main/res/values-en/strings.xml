@@ -7,4 +7,10 @@
     <string name="cont_desc_icon_decrease">Decrease icon</string>
     <string name="amount">Amount</string>
     <string name="unit_price">Unit Price</string>
+    <string name="category">Category: </string>
+    <string name="rating">Rating: </string>
+    <string name="year">Year: </string>
+    <string name="director">Director: </string>
+    <string name="description">Description </string>
+    <string name="add_basket">Add Basket</string>
 </resources>

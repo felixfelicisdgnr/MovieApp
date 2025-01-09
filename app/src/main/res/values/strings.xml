@@ -6,4 +6,10 @@
     <string name="cont_desc_icon_decrease">Azaltma ikonu</string>
     <string name="amount">Adet</string>
     <string name="unit_price">Adet fiyatı: </string>
+    <string name="category">Kategori: </string>
+    <string name="rating">Puan: </string>
+    <string name="year">Yıl: </string>
+    <string name="director">Yönetmen: </string>
+    <string name="description">Açıklama </string>
+    <string name="add_basket">Sepete Ekle</string>
 </resources>
