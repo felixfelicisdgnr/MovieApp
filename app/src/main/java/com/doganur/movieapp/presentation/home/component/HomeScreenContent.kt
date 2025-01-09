@@ -1,7 +1,6 @@
 package com.doganur.movieapp.presentation.home.component
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -11,16 +10,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.doganur.movieapp.common.EMPTY
 import com.doganur.movieapp.domain.model.MovieModel
+import com.doganur.movieapp.domain.model.SortType
 
 @Composable
 fun HomeScreenContent(
     moviesItems: List<MovieModel> = emptyList(),
     onAddToBasketButtonClick: (MovieModel) -> Unit,
     imageClick: (MovieModel) -> Unit,
-    onCategoryClick : (String) -> Unit,
-    isCategorySelected : (String) -> Boolean,
-    searchTextValue : String,
-    onSearchValueChange : (String) -> Unit
+    onCategoryClick: (String) -> Unit,
+    isCategorySelected: (String) -> Boolean,
+    searchTextValue: String,
+    onSearchValueChange: (String) -> Unit,
+    selectedSortType: SortType,
+    onSortTypeSelect: (SortType) -> Unit
 ) {
     val allCategories = moviesItems.map { it.category }.distinct()
 
@@ -35,6 +37,11 @@ fun HomeScreenContent(
         SearchTextField(
             searchTextValue = searchTextValue,
             onSearchValueChange = onSearchValueChange
+        )
+
+        SortMenu(
+            selectedSortType = selectedSortType,
+            onSortTypeSelect = onSortTypeSelect
         )
 
         CategoryChipsMenu(

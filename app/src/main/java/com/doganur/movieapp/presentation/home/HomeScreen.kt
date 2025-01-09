@@ -52,7 +52,9 @@ fun HomeScreen(
                 onCategoryClick = { onAction(UiAction.OnCategoryClick(it)) },
                 isCategorySelected = { it == uiState.selectedCategory },
                 searchTextValue = uiState.searchText,
-                onSearchValueChange = { onAction(UiAction.OnSearchValueChange(it)) }
+                onSearchValueChange = { onAction(UiAction.OnSearchValueChange(it)) },
+                selectedSortType = uiState.selectedSortType,
+                onSortTypeSelect = { onAction(UiAction.OnSortTypeChange(it)) }
             )
         }
 

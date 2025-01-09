@@ -5,9 +5,11 @@ import androidx.lifecycle.viewModelScope
 import com.doganur.movieapp.common.EMPTY
 import com.doganur.movieapp.common.Resource
 import com.doganur.movieapp.domain.model.MovieModel
+import com.doganur.movieapp.domain.model.SortType
 import com.doganur.movieapp.domain.usecase.AddBasketUseCase
 import com.doganur.movieapp.domain.usecase.GetAllMoviesUseCase
 import com.doganur.movieapp.domain.usecase.GetMoviesByCategoryUseCase
+import com.doganur.movieapp.domain.usecase.GetSortedMoviesUseCase
 import com.doganur.movieapp.presentation.home.HomeContract.UiAction
 import com.doganur.movieapp.presentation.home.HomeContract.UiEffect
 import com.doganur.movieapp.presentation.home.HomeContract.UiState
@@ -26,7 +28,8 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val getAllMoviesUseCase: GetAllMoviesUseCase,
     private val addBasketUseCase: AddBasketUseCase,
-    private val getMoviesByCategoryUseCase: GetMoviesByCategoryUseCase
+    private val getMoviesByCategoryUseCase: GetMoviesByCategoryUseCase,
+    private val getSortedMoviesUseCase: GetSortedMoviesUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(UiState())
@@ -56,6 +59,11 @@ class HomeViewModel @Inject constructor(
                     uiAction.category
                 }
                 getMoviesByCategory(newCategory)
+            }
+
+            is UiAction.OnSortTypeChange -> {
+                updateUiState { copy(selectedSortType = uiAction.sortType) }
+                getMovies()
             }
 
             is UiAction.OnSearchValueChange -> {
@@ -103,7 +111,6 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-
     private fun getMoviesByCategory(category: String) = viewModelScope.launch {
         updateUiState { copy(isLoading = true) }
 
@@ -118,6 +125,46 @@ class HomeViewModel @Inject constructor(
 
             is Resource.Fail -> {
                 emitUiEffect(UiEffect.ShowToast(message = result.message))
+                updateUiState { copy(isLoading = false) }
+            }
+        }
+    }
+
+    private fun getMovies() = viewModelScope.launch {
+        updateUiState { copy(isLoading = true) }
+
+        // Önce kategoriye göre filtrele
+        val categoryResult = if (uiState.value.selectedCategory.isEmpty()) {
+            getSortedMoviesUseCase(uiState.value.selectedSortType)
+        } else {
+            when (val result = getMoviesByCategoryUseCase(uiState.value.selectedCategory)) {
+                is Resource.Success -> {
+                    // Kategori filtrelenmiş listeyi sırala
+                    val sortedList = when (uiState.value.selectedSortType) {
+                        SortType.PRICE_ASC -> result.data.sortedBy { it.price }
+                        SortType.PRICE_DESC -> result.data.sortedByDescending { it.price }
+                        SortType.NEWEST -> result.data.sortedByDescending { it.year }
+                        SortType.NAME_ASC -> result.data.sortedBy { it.name }
+                        SortType.NAME_DESC -> result.data.sortedByDescending { it.name }
+                        SortType.RATE_ASC -> result.data.sortedByDescending { it.rating }
+                    }
+                    Resource.Success(sortedList)
+                }
+                is Resource.Fail -> result
+            }
+        }
+
+        when (categoryResult) {
+            is Resource.Success -> {
+                updateUiState {
+                    copy(
+                        list = categoryResult.data,
+                        isLoading = false
+                    )
+                }
+            }
+            is Resource.Fail -> {
+                emitUiEffect(UiEffect.ShowToast(message = categoryResult.message))
                 updateUiState { copy(isLoading = false) }
             }
         }
