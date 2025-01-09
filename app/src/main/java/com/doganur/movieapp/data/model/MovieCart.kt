@@ -5,35 +5,35 @@ import com.google.gson.annotations.SerializedName
 data class MovieCart(
 
     @SerializedName("cartId")
-    var cartId: Int? = null,
+    val cartId: Int? = null,
 
     @SerializedName("name")
-    var name: String? = null,
+    val name: String? = null,
 
     @SerializedName("image")
-    var image: String? = null,
+    val image: String? = null,
 
     @SerializedName("price")
-    var price: Int? = null,
+    val price: Int? = null,
 
     @SerializedName("category")
-    var category: String? = null,
+    val category: String? = null,
 
     @SerializedName("rating")
-    var rating: Double? = null,
+    val rating: Double? = null,
 
     @SerializedName("year")
-    var year: Int? = null,
+    val year: Int? = null,
 
     @SerializedName("director")
-    var director: String? = null,
+    val director: String? = null,
 
     @SerializedName("description")
-    var description: String? = null,
+    val description: String? = null,
 
     @SerializedName("orderAmount")
-    var orderAmount: Int? = null,
+    val orderAmount: Int? = null,
 
     @SerializedName("userName")
-    var username: String = "doganur_aydeniz"
+    val username: String = "doganur_aydeniz"
 )
