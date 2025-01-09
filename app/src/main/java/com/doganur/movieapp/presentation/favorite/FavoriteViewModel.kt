@@ -1,9 +1,9 @@
-package com.doganur.movieapp.presentation.favourites
+package com.doganur.movieapp.presentation.favorite
 
 import androidx.lifecycle.ViewModel
-import com.doganur.movieapp.presentation.favourites.FavouritesContract.UiAction
-import com.doganur.movieapp.presentation.favourites.FavouritesContract.UiEffect
-import com.doganur.movieapp.presentation.favourites.FavouritesContract.UiState
+import com.doganur.movieapp.presentation.favorite.FavoriteContract.UiAction
+import com.doganur.movieapp.presentation.favorite.FavoriteContract.UiEffect
+import com.doganur.movieapp.presentation.favorite.FavoriteContract.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
-class FavouritesViewModel @Inject constructor() : ViewModel() {
+class FavoriteViewModel @Inject constructor() : ViewModel() {
 
     private val _uiState = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()

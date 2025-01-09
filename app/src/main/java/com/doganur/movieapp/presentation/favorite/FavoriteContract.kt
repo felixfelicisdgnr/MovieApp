@@ -1,6 +1,6 @@
-package com.doganur.movieapp.presentation.favourites
+package com.doganur.movieapp.presentation.favorite
 
-object FavouritesContract {
+object FavoriteContract {
     data class UiState(
         val isLoading: Boolean = false,
         val list: List<String> = emptyList(),

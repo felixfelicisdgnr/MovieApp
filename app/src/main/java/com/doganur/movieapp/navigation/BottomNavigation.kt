@@ -19,7 +19,7 @@ fun BottomNavigation(
 ) {
     val items = listOf(
         BottomNavItem.Home,
-        BottomNavItem.Favourites,
+        BottomNavItem.Favorite,
         BottomNavItem.Basket
     )
 
@@ -54,8 +54,8 @@ sealed class BottomNavItem(
         icon = Icons.Default.Home
     )
     
-    data object Favourites : BottomNavItem(
-        route = Screen.Favourites,
+    data object Favorite : BottomNavItem(
+        route = Screen.Favorite,
         title = "Favoriler",
         icon = Icons.Default.Favorite
     )
