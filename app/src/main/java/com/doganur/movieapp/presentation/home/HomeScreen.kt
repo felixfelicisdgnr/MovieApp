@@ -48,7 +48,11 @@ fun HomeScreen(
             HomeScreenContent(
                 moviesItems = uiState.list,
                 onAddToBasketButtonClick = { onAction(UiAction.OnAddToBasketClick(it)) },
-                imageClick = { navigateToMovieDetail(it) }
+                imageClick = { navigateToMovieDetail(it) },
+                onCategoryClick = { onAction(UiAction.OnCategoryClick(it)) },
+                isCategorySelected = { it == uiState.selectedCategory },
+                searchTextValue = uiState.searchText,
+                onSearchValueChange = { onAction(UiAction.OnSearchValueChange(it)) }
             )
         }
 

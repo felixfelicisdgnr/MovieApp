@@ -2,6 +2,7 @@ package com.doganur.movieapp.presentation.home.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -17,7 +18,8 @@ fun MovieList(
     imageClick: (MovieModel) -> Unit
 ) {
     LazyVerticalGrid(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+        .fillMaxWidth(),
         columns = GridCells.Fixed(count = 2),
         horizontalArrangement = Arrangement.spacedBy(space = 12.dp),
         verticalArrangement = Arrangement.spacedBy(space = 9.dp)

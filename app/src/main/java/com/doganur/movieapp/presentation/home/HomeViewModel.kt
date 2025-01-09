@@ -2,10 +2,12 @@ package com.doganur.movieapp.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.doganur.movieapp.common.EMPTY
 import com.doganur.movieapp.common.Resource
 import com.doganur.movieapp.domain.model.MovieModel
 import com.doganur.movieapp.domain.usecase.AddBasketUseCase
 import com.doganur.movieapp.domain.usecase.GetAllMoviesUseCase
+import com.doganur.movieapp.domain.usecase.GetMoviesByCategoryUseCase
 import com.doganur.movieapp.presentation.home.HomeContract.UiAction
 import com.doganur.movieapp.presentation.home.HomeContract.UiEffect
 import com.doganur.movieapp.presentation.home.HomeContract.UiState
@@ -24,6 +26,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val getAllMoviesUseCase: GetAllMoviesUseCase,
     private val addBasketUseCase: AddBasketUseCase,
+    private val getMoviesByCategoryUseCase: GetMoviesByCategoryUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(UiState())
@@ -32,6 +35,8 @@ class HomeViewModel @Inject constructor(
     private val _uiEffect by lazy { Channel<UiEffect>() }
     val uiEffect: Flow<UiEffect> by lazy { _uiEffect.receiveAsFlow() }
 
+    private var allMovies: List<MovieModel> = emptyList()
+
     init {
         getAllMovies()
     }
@@ -39,8 +44,22 @@ class HomeViewModel @Inject constructor(
     fun onAction(uiAction: UiAction) {
         when (uiAction) {
             is UiAction.OnAddToBasketClick -> addToBasket(uiAction.movieModel)
+
             is UiAction.OnMovieItemClick -> viewModelScope.launch {
                 emitUiEffect(UiEffect.NavigateToMovieDetail(uiAction.movieModel))
+            }
+
+            is UiAction.OnCategoryClick -> {
+                val newCategory = if (uiState.value.selectedCategory == uiAction.category) {
+                    String.EMPTY
+                } else {
+                    uiAction.category
+                }
+                getMoviesByCategory(newCategory)
+            }
+
+            is UiAction.OnSearchValueChange -> {
+                updateUiState { copy(searchText = uiAction.searchText) }
             }
         }
     }
@@ -49,9 +68,19 @@ class HomeViewModel @Inject constructor(
         updateUiState { copy(isLoading = true) }
 
         when (val result = getAllMoviesUseCase()) {
-            is Resource.Success -> updateUiState { copy(list = result.data, isLoading = false) }
+
+            is Resource.Success -> {
+                allMovies = result.data
+                updateUiState {
+                    copy(
+                        list = allMovies,
+                        isLoading = false
+                    )
+                }
+            }
+
             is Resource.Fail -> {
-                emitUiEffect(UiEffect.ShowToast(message = result.message,))
+                emitUiEffect(UiEffect.ShowToast(message = result.message))
                 updateUiState { copy(isLoading = false) }
             }
         }
@@ -71,6 +100,26 @@ class HomeViewModel @Inject constructor(
         when (result) {
             is Resource.Success -> emitUiEffect(UiEffect.ShowToast(message = result.data))
             is Resource.Fail -> emitUiEffect(UiEffect.ShowToast(message = result.message))
+        }
+    }
+
+
+    private fun getMoviesByCategory(category: String) = viewModelScope.launch {
+        updateUiState { copy(isLoading = true) }
+
+        when (val result = getMoviesByCategoryUseCase(category)) {
+            is Resource.Success -> updateUiState {
+                copy(
+                    list = if (category.isEmpty()) allMovies else result.data,
+                    selectedCategory = category,
+                    isLoading = false
+                )
+            }
+
+            is Resource.Fail -> {
+                emitUiEffect(UiEffect.ShowToast(message = result.message))
+                updateUiState { copy(isLoading = false) }
+            }
         }
     }
 
