@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">MovieApp</string>
+    <string name="app_name">MoviesApp</string>
+    <string name="cont_desc_image_movie">Film Resmi</string>
+    <string name="cont_desc_icon_add">Ekleme ikonu</string>
+    <string name="cont_desc_icon_delete">Silme ikonu</string>
+    <string name="cont_desc_icon_decrease">Azaltma ikonu</string>
+    <string name="amount">Adet</string>
+    <string name="unit_price">Adet fiyatı: </string>
+    <string name="category">Kategori: </string>
+    <string name="rating">Puan: </string>
+    <string name="year">Yıl: </string>
+    <string name="director">Yönetmen: </string>
+    <string name="description">Açıklama </string>
+    <string name="add_basket">Sepete Ekle</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.doganur.movieapp.domain.repository
 
 import com.doganur.movieapp.common.Resource
+import com.doganur.movieapp.domain.model.MovieCartModel
 import com.doganur.movieapp.domain.model.MovieModel
 
 interface MainRepository {
@@ -14,5 +15,13 @@ interface MainRepository {
         year: Int,
         director: String,
         description: String,
+    ): Resource<String>
+
+    suspend fun getBasket(
+        username: String,
+    ): Resource<List<MovieCartModel>>
+
+    suspend fun deleteMovieCart(
+        cartId: Int,
     ): Resource<String>
 }

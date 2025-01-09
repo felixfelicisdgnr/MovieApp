@@ -1,10 +1,7 @@
 package com.doganur.movieapp.domain.model
 
-import kotlinx.serialization.Serializable
-
-@Serializable
-data class MovieModel(
-    val id: Int,
+data class MovieCartModel(
+    val cartId: Int,
     val name: String,
     val image: String,
     val price: Int,
@@ -14,4 +11,7 @@ data class MovieModel(
     val year: Int,
     val director: String,
     val description: String,
+    val orderAmount: Int,
+    val orderAmountStr: String,
+    val username: String = "doganur_aydeniz"
 )

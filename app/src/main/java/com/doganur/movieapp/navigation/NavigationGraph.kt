@@ -8,14 +8,14 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.doganur.movieapp.ui.home.HomeScreen
-import com.doganur.movieapp.ui.home.HomeViewModel
-import com.doganur.movieapp.ui.moviedetail.MovieDetailScreen
-import com.doganur.movieapp.ui.moviedetail.MovieDetailViewModel
-import com.doganur.movieapp.ui.basket.BasketScreen
-import com.doganur.movieapp.ui.basket.BasketViewModel
-import com.doganur.movieapp.ui.favourites.FavouritesScreen
-import com.doganur.movieapp.ui.favourites.FavouritesViewModel
+import com.doganur.movieapp.presentation.basket.BasketScreen
+import com.doganur.movieapp.presentation.basket.BasketViewModel
+import com.doganur.movieapp.presentation.favourites.FavouritesScreen
+import com.doganur.movieapp.presentation.favourites.FavouritesViewModel
+import com.doganur.movieapp.presentation.home.HomeScreen
+import com.doganur.movieapp.presentation.home.HomeViewModel
+import com.doganur.movieapp.presentation.moviedetail.MovieDetailScreen
+import com.doganur.movieapp.presentation.moviedetail.MovieDetailViewModel
 
 @Composable
 fun NavigationGraph(
@@ -36,17 +36,34 @@ fun NavigationGraph(
                 uiState = uiState,
                 uiEffect = uiEffect,
                 onAction = viewModel::onAction
-            )
+            ) { movie ->
+                navController.navigate(Screen.MovieDetail(
+                    movieId = movie.id,
+                    name = movie.name,
+                    image = movie.image,
+                    price = movie.price,
+                    category = movie.category,
+                    rating = movie.rating,
+                    year = movie.year,
+                    director = movie.director,
+                    description = movie.description
+                ))
+            }
+
+
         }
         composable<Screen.MovieDetail> {
             val viewModel: MovieDetailViewModel = hiltViewModel()
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
             val uiEffect = viewModel.uiEffect
+
             MovieDetailScreen(
                 uiState = uiState,
                 uiEffect = uiEffect,
-                onAction = viewModel::onAction
-            )
+                onAction = viewModel::onAction,
+            ) {
+                navController.navigateUp()
+            }
         }
         composable<Screen.Basket> {
             val viewModel: BasketViewModel = hiltViewModel()
