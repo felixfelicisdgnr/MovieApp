@@ -37,17 +37,19 @@ fun NavigationGraph(
                 uiEffect = uiEffect,
                 onAction = viewModel::onAction
             ) { movie ->
-                navController.navigate(Screen.MovieDetail(
-                    movieId = movie.id,
-                    name = movie.name,
-                    image = movie.image,
-                    price = movie.price,
-                    category = movie.category,
-                    rating = movie.rating,
-                    year = movie.year,
-                    director = movie.director,
-                    description = movie.description
-                ))
+                navController.navigate(
+                    Screen.MovieDetail(
+                        movieId = movie.id,
+                        name = movie.name,
+                        image = movie.image,
+                        price = movie.price,
+                        category = movie.category,
+                        rating = movie.rating,
+                        year = movie.year,
+                        director = movie.director,
+                        description = movie.description
+                    )
+                )
             }
 
 
@@ -61,9 +63,22 @@ fun NavigationGraph(
                 uiState = uiState,
                 uiEffect = uiEffect,
                 onAction = viewModel::onAction,
-            ) {
-                navController.navigateUp()
-            }
+                navigateToMovieDetail = { movieModel ->
+                    navController.navigate(
+                        Screen.MovieDetail(
+                            movieId = movieModel.id,
+                            name = movieModel.name,
+                            image = movieModel.image,
+                            price = movieModel.price,
+                            category = movieModel.category,
+                            rating = movieModel.rating,
+                            year = movieModel.year,
+                            director = movieModel.director,
+                            description = movieModel.description
+                        )
+                    )
+                }
+            )
         }
         composable<Screen.Basket> {
             val viewModel: BasketViewModel = hiltViewModel()

@@ -5,6 +5,11 @@
     <string name="cont_desc_icon_add">Add icon</string>
     <string name="cont_desc_icon_delete">Delete icon</string>
     <string name="cont_desc_icon_decrease">Decrease icon</string>
+    <string name="cont_desc_icon_category">Category icon</string>
+    <string name="cont_desc_icon_calendar">Date icon</string>
+    <string name="cont_desc_icon_director">Director icon</string>
+    <string name="cont_desc_icon_rating">Rating icon</string>
+    <string name="cont_desc_icon_sell">Price icon</string>
     <string name="amount">Amount</string>
     <string name="unit_price">Unit Price</string>
     <string name="category">Category: </string>
@@ -13,4 +18,5 @@
     <string name="director">Director: </string>
     <string name="description">Description </string>
     <string name="add_basket">Add Basket</string>
+    <string name="similar_movies">Similar Movies</string>
 </resources>
