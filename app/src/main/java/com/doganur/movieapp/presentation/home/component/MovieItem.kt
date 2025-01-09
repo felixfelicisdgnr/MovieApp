@@ -23,6 +23,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.doganur.movieapp.presentation.theme.AppTheme
 
 @Composable
 fun MovieItem(
@@ -99,12 +100,14 @@ fun MovieItem(
 @Preview
 @Composable
 fun MovieItemPreview() {
-    MovieItem(
-        imageUrl = "https://image",
-        movieTitle = "Movie Name",
-        moviePrice = "10.0",
-        addBasketButtonClick = {},
-        imageClick = {}
-    )
+    AppTheme {
+        MovieItem(
+            imageUrl = "https://image",
+            movieTitle = "Movie Name",
+            moviePrice = "10.0",
+            addBasketButtonClick = {},
+            imageClick = {}
+        )
+    }
 }
 

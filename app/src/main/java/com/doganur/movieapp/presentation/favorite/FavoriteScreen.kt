@@ -1,11 +1,18 @@
 package com.doganur.movieapp.presentation.favorite
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import com.doganur.movieapp.common.base.components.EmptyScreen
+import com.doganur.movieapp.common.base.components.LoadingBar
 import com.doganur.movieapp.presentation.favorite.FavoriteContract.UiAction
 import com.doganur.movieapp.presentation.favorite.FavoriteContract.UiEffect
 import com.doganur.movieapp.presentation.favorite.FavoriteContract.UiState
+import com.doganur.movieapp.presentation.favorite.component.FavoriteScreenContent
 import com.doganur.movieapp.presentation.favorite.preview.FavoriteScreenPreviewProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
@@ -16,7 +23,19 @@ fun FavoriteScreen(
     uiEffect: Flow<UiEffect>,
     onAction: (UiAction) -> Unit,
 ) {
-    
+    Box(
+        modifier = Modifier
+            .fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        if (uiState.list.isEmpty() && !uiState.isLoading) {
+            EmptyScreen()
+        } else {
+            FavoriteScreenContent()
+        }
+
+        if (uiState.isLoading) LoadingBar()
+    }
 }
 
 @Preview(showBackground = true)

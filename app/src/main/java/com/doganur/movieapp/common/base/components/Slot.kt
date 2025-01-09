@@ -1,4 +1,4 @@
-package com.doganur.movieapp.common.base
+package com.doganur.movieapp.common.base.components
 
 import androidx.compose.runtime.Composable
 

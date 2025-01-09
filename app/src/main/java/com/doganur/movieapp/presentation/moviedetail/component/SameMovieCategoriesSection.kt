@@ -130,12 +130,10 @@ fun SameMovieCategoriesSectionPreview() {
         )
     )
 
-
     AppTheme {
         SameMovieCategoriesSection(
             categoryList = categoryList,
             onMovieClick = {}
         )
     }
-
 }

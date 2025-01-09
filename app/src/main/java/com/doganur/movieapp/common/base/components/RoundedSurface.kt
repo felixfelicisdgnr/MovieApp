@@ -1,4 +1,4 @@
-package com.doganur.movieapp.common.base
+package com.doganur.movieapp.common.base.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.padding

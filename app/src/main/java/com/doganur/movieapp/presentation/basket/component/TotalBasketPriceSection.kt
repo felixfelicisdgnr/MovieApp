@@ -9,9 +9,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.doganur.movieapp.common.base.MyAppButton
+import com.doganur.movieapp.R
+import com.doganur.movieapp.common.base.components.MyAppButton
+import com.doganur.movieapp.presentation.theme.AppTheme
 import com.doganur.movieapp.presentation.theme.UrbanistMediumTextStyle
 
 @Composable
@@ -29,7 +32,7 @@ fun TotalBasketPriceSection(
         ) {
             Text(
                 modifier = Modifier,
-                text = "Total Price",
+                text = stringResource(id = R.string.total_price),
                 style = UrbanistMediumTextStyle.copy(
                     fontSize = 20.sp,
                     color = Color.Black
@@ -47,7 +50,7 @@ fun TotalBasketPriceSection(
         }
 
         MyAppButton(
-            text = "satın al",
+            text = stringResource(id = R.string.confirm_basket),
             onClick = {}
         )
     }
@@ -56,7 +59,9 @@ fun TotalBasketPriceSection(
 @Composable
 @Preview
 fun TotalBasketPriceSectionPreview() {
-    TotalBasketPriceSection(
-        totalPrice = "Total Price: 100 TL"
-    )
+    AppTheme {
+        TotalBasketPriceSection(
+            totalPrice = "Total Price: 100 TL"
+        )
+    }
 }

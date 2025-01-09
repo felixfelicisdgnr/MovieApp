@@ -12,10 +12,8 @@ import com.doganur.movieapp.presentation.basket.BasketContract.UiEffect
 import com.doganur.movieapp.presentation.basket.BasketContract.UiState
 import com.doganur.movieapp.presentation.basket.component.BasketScreenContent
 import com.doganur.movieapp.presentation.basket.preview.BasketScreenPreviewProvider
-import com.doganur.movieapp.presentation.components.EmptyScreen
-import com.doganur.movieapp.presentation.components.LoadingBar
-import com.doganur.movieapp.presentation.home.HomeContract
-import com.doganur.movieapp.presentation.home.component.HomeScreenContent
+import com.doganur.movieapp.common.base.components.EmptyScreen
+import com.doganur.movieapp.common.base.components.LoadingBar
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 

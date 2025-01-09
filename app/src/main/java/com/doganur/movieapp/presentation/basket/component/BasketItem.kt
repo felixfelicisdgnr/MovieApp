@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.doganur.movieapp.presentation.theme.AppTheme
 
 @Composable
 fun BasketItem(
@@ -57,14 +58,16 @@ fun BasketItem(
 @Composable
 @Preview
 fun BasketItemPreview() {
-    BasketItem(
-        image = "https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg",
-        name = "Harry Potter",
-        unitPrice = "50",
-        orderAmount = "1",
-        totalPrice = "₺ 50",
-        onDeleteButtonClick = {},
-        onIncreaseButtonClick = {},
-        onDecreaseButtonClick = {}
-    )
+    AppTheme {
+        BasketItem(
+            image = "https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg",
+            name = "Harry Potter",
+            unitPrice = "50",
+            orderAmount = "1",
+            totalPrice = "₺ 50",
+            onDeleteButtonClick = {},
+            onIncreaseButtonClick = {},
+            onDecreaseButtonClick = {}
+        )
+    }
 }

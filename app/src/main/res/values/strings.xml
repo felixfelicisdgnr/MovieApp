@@ -9,6 +9,7 @@
     <string name="cont_desc_icon_director">Yönetmen ikonu</string>
     <string name="cont_desc_icon_rating">Puan ikonu</string>
     <string name="cont_desc_icon_sell">Fiyat ikonu</string>
+    <string name="cont_desc_icon_search">Arama ikonu</string>
     <string name="amount">Adet</string>
     <string name="unit_price">Adet fiyatı: </string>
     <string name="category">Kategori: </string>
@@ -18,4 +19,7 @@
     <string name="description">Açıklama </string>
     <string name="add_basket">Sepete Ekle</string>
     <string name="similar_movies">Benzer Filmler</string>
+    <string name="search_hint">Film adıyla arama yapabilirsiniz…</string>
+    <string name="total_price">Toplam</string>
+    <string name="confirm_basket">Sepeti Onayla</string>
 </resources>

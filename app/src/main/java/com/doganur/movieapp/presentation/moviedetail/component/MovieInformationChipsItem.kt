@@ -12,11 +12,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.doganur.movieapp.R
-import com.doganur.movieapp.common.base.RoundedSurface
+import com.doganur.movieapp.common.base.components.RoundedSurface
 import com.doganur.movieapp.presentation.theme.AppTheme
 import com.doganur.movieapp.presentation.theme.BlackColor
 import com.doganur.movieapp.presentation.theme.PrimaryColor
@@ -65,9 +66,9 @@ fun MovieInformationChipsItem(
 fun MovieInformationChipsItemPreview() {
     AppTheme {
         MovieInformationChipsItem(
-            text = "Action",
+            text = stringResource(id = R.string.category),
             icon = R.drawable.ic_category,
-            iconDescription = "Action"
+            iconDescription = stringResource(id = R.string.cont_desc_icon_category)
         )
     }
 }

@@ -9,7 +9,6 @@ import com.doganur.movieapp.domain.model.MovieModel
 import com.doganur.movieapp.domain.usecase.AddBasketUseCase
 import com.doganur.movieapp.domain.usecase.GetMoviesByCategoryUseCase
 import com.doganur.movieapp.navigation.Screen
-import com.doganur.movieapp.presentation.home.HomeContract
 import com.doganur.movieapp.presentation.moviedetail.MovieDetailContract.UiAction
 import com.doganur.movieapp.presentation.moviedetail.MovieDetailContract.UiEffect
 import com.doganur.movieapp.presentation.moviedetail.MovieDetailContract.UiState

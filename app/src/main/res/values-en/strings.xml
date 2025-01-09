@@ -10,6 +10,7 @@
     <string name="cont_desc_icon_director">Director icon</string>
     <string name="cont_desc_icon_rating">Rating icon</string>
     <string name="cont_desc_icon_sell">Price icon</string>
+    <string name="cont_desc_icon_search">Search icon</string>
     <string name="amount">Amount</string>
     <string name="unit_price">Unit Price</string>
     <string name="category">Category: </string>
@@ -19,4 +20,7 @@
     <string name="description">Description </string>
     <string name="add_basket">Add Basket</string>
     <string name="similar_movies">Similar Movies</string>
+    <string name="search_hint">Search by movie name…</string>
+    <string name="total_price">Total</string>
+    <string name="confirm_basket">Confirm Basket</string>
 </resources>

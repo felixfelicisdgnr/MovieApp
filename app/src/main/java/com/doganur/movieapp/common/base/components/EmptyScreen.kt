@@ -1,4 +1,4 @@
-package com.doganur.movieapp.presentation.components
+package com.doganur.movieapp.common.base.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

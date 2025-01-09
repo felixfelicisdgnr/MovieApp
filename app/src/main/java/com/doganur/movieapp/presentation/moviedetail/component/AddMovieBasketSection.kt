@@ -11,8 +11,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.doganur.movieapp.R
-import com.doganur.movieapp.common.base.MyAppButton
+import com.doganur.movieapp.common.base.components.MyAppButton
 import com.doganur.movieapp.domain.model.MovieModel
+import com.doganur.movieapp.presentation.theme.AppTheme
 import com.doganur.movieapp.presentation.theme.BlackColor
 import com.doganur.movieapp.presentation.theme.UrbanistBoldTextStyle
 
@@ -47,20 +48,22 @@ fun AddMovieBasketSection(
 @Composable
 @Preview
 fun AddMovieBasketSectionPreview() {
-    AddMovieBasketSection(
-        price = "10.0",
-        addBasketButtonClick = {},
-        movieModel = MovieModel(
-            id = 1,
-            name = "Movie Name",
-            image = "https://www.google.com",
-            category = "Action",
-            rating = 8.0,
-            year = 2021,
-            director = "Director Name",
-            description = "Description",
-            price = 10,
-            priceStr = "10.0"
+    AppTheme {
+        AddMovieBasketSection(
+            price = "10.0",
+            addBasketButtonClick = {},
+            movieModel = MovieModel(
+                id = 1,
+                name = "Movie Name",
+                image = "https://www.google.com",
+                category = "Action",
+                rating = 8.0,
+                year = 2021,
+                director = "Director Name",
+                description = "Description",
+                price = 10,
+                priceStr = "10.0"
+            )
         )
-    )
+    }
 }

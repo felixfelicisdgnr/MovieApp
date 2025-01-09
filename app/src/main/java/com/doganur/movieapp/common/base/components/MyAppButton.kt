@@ -1,4 +1,4 @@
-package com.doganur.movieapp.common.base
+package com.doganur.movieapp.common.base.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width

@@ -3,7 +3,6 @@ package com.doganur.movieapp.presentation.home.component
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -20,13 +19,14 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.doganur.movieapp.presentation.theme.AppTheme
 import com.doganur.movieapp.presentation.theme.PrimaryColor
 
 @Composable
 fun CategoryChipsMenu(
     categoryList: List<String> = emptyList(),
     onCategoryClick: (String) -> Unit,
-    isSelected : (String) -> Boolean
+    isSelected: (String) -> Boolean
 ) {
     val lazyListState = rememberLazyListState()
 
@@ -89,9 +89,11 @@ fun CategoryChipsMenu(
 @Composable
 @Preview
 fun CategoryChipsMenuPreview() {
-    CategoryChipsMenu(
-        categoryList = listOf("Action", "Comedy", "Drama", "Horror", "Sci-Fi"),
-        onCategoryClick = {},
-        isSelected = { false }
-    )
+    AppTheme {
+        CategoryChipsMenu(
+            categoryList = listOf("Action", "Comedy", "Drama", "Horror", "Sci-Fi"),
+            onCategoryClick = {},
+            isSelected = { false }
+        )
+    }
 }

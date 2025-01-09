@@ -11,8 +11,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.doganur.movieapp.common.collectWithLifecycle
 import com.doganur.movieapp.domain.model.MovieModel
-import com.doganur.movieapp.presentation.components.EmptyScreen
-import com.doganur.movieapp.presentation.components.LoadingBar
+import com.doganur.movieapp.common.base.components.EmptyScreen
+import com.doganur.movieapp.common.base.components.LoadingBar
 import com.doganur.movieapp.presentation.home.HomeContract.UiAction
 import com.doganur.movieapp.presentation.home.HomeContract.UiEffect
 import com.doganur.movieapp.presentation.home.HomeContract.UiState

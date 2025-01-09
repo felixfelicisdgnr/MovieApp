@@ -19,7 +19,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.doganur.movieapp.common.base.RoundedSurface
+import com.doganur.movieapp.common.base.components.RoundedSurface
+import com.doganur.movieapp.presentation.theme.AppTheme
 import com.doganur.movieapp.presentation.theme.BlackColor
 import com.doganur.movieapp.presentation.theme.PrimaryColor
 import com.doganur.movieapp.presentation.theme.UrbanistSemiBoldTextStyle
@@ -71,36 +72,38 @@ fun ChipsMenuItem(
 @Preview
 @Composable
 fun ChipsMenuItemPreview() {
-    Column {
-        ChipsMenuItem(
-            isSelected = false,
-            chipTitle = "Kamp Alanları",
-            cornerRadius = 30.dp,
-            fontSize = 14.sp,
-            selectedTextColor = Color.White,
-            selectedBorderStroke = BorderStroke(1.5.dp, PrimaryColor),
-            selectedBackgroundColor = PrimaryColor,
-            unselectedTextColor = BlackColor,
-            unselectedBorderStroke = BorderStroke(1.5.dp, BlackColor),
-            unselectedBackgroundColor = Color.Transparent,
-            onClick = {}
-        )
+    AppTheme {
+        Column {
+            ChipsMenuItem(
+                isSelected = false,
+                chipTitle = "Kamp Alanları",
+                cornerRadius = 30.dp,
+                fontSize = 14.sp,
+                selectedTextColor = Color.White,
+                selectedBorderStroke = BorderStroke(1.5.dp, PrimaryColor),
+                selectedBackgroundColor = PrimaryColor,
+                unselectedTextColor = BlackColor,
+                unselectedBorderStroke = BorderStroke(1.5.dp, BlackColor),
+                unselectedBackgroundColor = Color.Transparent,
+                onClick = {}
+            )
 
-        Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
-        ChipsMenuItem(
-            isSelected = false,
-            chipTitle = "Şehir Seç",
-            cornerRadius = 8.dp,
-            fontSize = 12.sp,
-            selectedTextColor = Color.White,
-            selectedBorderStroke = BorderStroke(1.dp, PrimaryColor),
-            selectedBackgroundColor = PrimaryColor,
-            unselectedTextColor = BlackColor,
-            unselectedBorderStroke = BorderStroke(1.dp, BlackColor),
-            unselectedBackgroundColor = Color.Transparent,
-            onClick = {}
-        )
+            ChipsMenuItem(
+                isSelected = false,
+                chipTitle = "Şehir Seç",
+                cornerRadius = 8.dp,
+                fontSize = 12.sp,
+                selectedTextColor = Color.White,
+                selectedBorderStroke = BorderStroke(1.dp, PrimaryColor),
+                selectedBackgroundColor = PrimaryColor,
+                unselectedTextColor = BlackColor,
+                unselectedBorderStroke = BorderStroke(1.dp, BlackColor),
+                unselectedBackgroundColor = Color.Transparent,
+                onClick = {}
+            )
+        }
     }
 }
 
