@@ -8,6 +8,7 @@ import com.doganur.movieapp.domain.mapper.mapToMovieModelList
 import com.doganur.movieapp.domain.model.MovieCartModel
 import com.doganur.movieapp.domain.model.MovieModel
 import com.doganur.movieapp.domain.repository.MainRepository
+import okio.EOFException
 import javax.inject.Inject
 
 class MainRepositoryImpl @Inject constructor(
@@ -63,6 +64,8 @@ class MainRepositoryImpl @Inject constructor(
                 userName = "doganur_aydeniz"
             )
             Resource.Success(response.mapToMovieCartModelList())
+        } catch (e: EOFException) {
+            Resource.Success(emptyList())
         } catch (e: Exception) {
             Resource.Fail(e.message.orEmpty())
         }

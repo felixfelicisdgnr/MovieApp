@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.doganur.movieapp.common.EMPTY
+import com.doganur.movieapp.common.base.components.EmptyScreen
 import com.doganur.movieapp.domain.model.MovieModel
 import com.doganur.movieapp.domain.model.SortType
 
@@ -17,15 +17,14 @@ fun HomeScreenContent(
     moviesItems: List<MovieModel> = emptyList(),
     onAddToBasketButtonClick: (MovieModel) -> Unit,
     imageClick: (MovieModel) -> Unit,
+    categories: List<String>,
     onCategoryClick: (String) -> Unit,
-    isCategorySelected: (String) -> Boolean,
+    selectedCategory: String,
     searchTextValue: String,
     onSearchValueChange: (String) -> Unit,
     selectedSortType: SortType,
     onSortTypeSelect: (SortType) -> Unit
 ) {
-    val allCategories = moviesItems.map { it.category }.distinct()
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -45,21 +44,19 @@ fun HomeScreenContent(
         )
 
         CategoryChipsMenu(
-            categoryList = allCategories,
-            onCategoryClick = onCategoryClick,
-            isSelected = { isCategorySelected(it) }
+            categoryList = categories,
+            selectedCategory = selectedCategory,
+            onCategoryClick = onCategoryClick
         )
 
-        MovieList(
-            moviesItems = if (isCategorySelected(String.EMPTY)) {
-                moviesItems
-            } else {
-                moviesItems.filter { movie ->
-                    isCategorySelected(movie.category)
-                }
-            },
-            onAddToBasketButtonClick = onAddToBasketButtonClick,
-            imageClick = imageClick
-        )
+        if (moviesItems.isEmpty()) {
+            EmptyScreen()
+        } else {
+            MovieList(
+                moviesItems = moviesItems,
+                onAddToBasketButtonClick = onAddToBasketButtonClick,
+                imageClick = imageClick
+            )
+        }
     }
 }

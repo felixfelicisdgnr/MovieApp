@@ -25,8 +25,8 @@ import com.doganur.movieapp.presentation.theme.PrimaryColor
 @Composable
 fun CategoryChipsMenu(
     categoryList: List<String> = emptyList(),
-    onCategoryClick: (String) -> Unit,
-    isSelected: (String) -> Boolean
+    selectedCategory: String = "",
+    onCategoryClick: (String) -> Unit
 ) {
     val lazyListState = rememberLazyListState()
 
@@ -63,7 +63,7 @@ fun CategoryChipsMenu(
         categoryList.forEach { movieCategory ->
             item {
                 ChipsMenuItem(
-                    isSelected = isSelected(movieCategory),
+                    isSelected = selectedCategory == movieCategory,
                     chipTitle = movieCategory,
                     cornerRadius = 30.dp,
                     fontSize = 14.sp,
@@ -93,7 +93,7 @@ fun CategoryChipsMenuPreview() {
         CategoryChipsMenu(
             categoryList = listOf("Action", "Comedy", "Drama", "Horror", "Sci-Fi"),
             onCategoryClick = {},
-            isSelected = { false }
+            selectedCategory = "Action"
         )
     }
 }

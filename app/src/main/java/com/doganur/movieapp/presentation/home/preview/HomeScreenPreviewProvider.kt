@@ -9,15 +9,15 @@ class HomeScreenPreviewProvider : PreviewParameterProvider<HomeContract.UiState>
         get() = sequenceOf(
             HomeContract.UiState(
                 isLoading = true,
-                list = emptyList(),
+                movies = emptyList(),
             ),
             HomeContract.UiState(
                 isLoading = false,
-                list = emptyList(),
+                movies = emptyList(),
             ),
             HomeContract.UiState(
                 isLoading = false,
-                list = listOf(
+                movies = listOf(
                     MovieModel(
                         id = 1,
                         name = "Movie 1",

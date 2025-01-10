@@ -7,7 +7,8 @@ import com.doganur.movieapp.domain.model.SortType
 object HomeContract {
     data class UiState(
         val isLoading: Boolean = false,
-        val list: List<MovieModel> = emptyList(),
+        val movies: List<MovieModel> = emptyList(),
+        val categories: List<String> = emptyList(),
         val selectedCategory: String = String.EMPTY,
         val searchText: String = String.EMPTY,
         val selectedSortType: SortType = SortType.NEWEST

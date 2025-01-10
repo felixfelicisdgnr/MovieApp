@@ -7,7 +7,7 @@ import androidx.navigation.toRoute
 import com.doganur.movieapp.common.Resource
 import com.doganur.movieapp.domain.model.MovieModel
 import com.doganur.movieapp.domain.usecase.AddBasketUseCase
-import com.doganur.movieapp.domain.usecase.GetMoviesByCategoryUseCase
+import com.doganur.movieapp.domain.usecase.GetMoviesUseCase
 import com.doganur.movieapp.navigation.Screen
 import com.doganur.movieapp.presentation.moviedetail.MovieDetailContract.UiAction
 import com.doganur.movieapp.presentation.moviedetail.MovieDetailContract.UiEffect
@@ -26,7 +26,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val getMoviesByCategoryUseCase: GetMoviesByCategoryUseCase,
+    private val getMoviesUseCase: GetMoviesUseCase,
     private val addBasketUseCase: AddBasketUseCase
 ) : ViewModel() {
 
@@ -71,7 +71,7 @@ class MovieDetailViewModel @Inject constructor(
     private fun getSimilarMovies(category: String) = viewModelScope.launch {
         updateUiState { copy(isLoading = true) }
 
-        when (val result = getMoviesByCategoryUseCase(category)) {
+        when (val result = getMoviesUseCase("", null, category)) {
             is Resource.Success -> {
                 val filteredMovies =
                     result.data.filter { it.id != uiState.value.movieId }  // Mevcut filmi benzer filmler listesinden çıkar

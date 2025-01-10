@@ -9,10 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import com.doganur.movieapp.common.base.components.LoadingBar
 import com.doganur.movieapp.common.collectWithLifecycle
 import com.doganur.movieapp.domain.model.MovieModel
-import com.doganur.movieapp.common.base.components.EmptyScreen
-import com.doganur.movieapp.common.base.components.LoadingBar
 import com.doganur.movieapp.presentation.home.HomeContract.UiAction
 import com.doganur.movieapp.presentation.home.HomeContract.UiEffect
 import com.doganur.movieapp.presentation.home.HomeContract.UiState
@@ -32,7 +31,6 @@ fun HomeScreen(
     uiEffect.collectWithLifecycle {
         when (it) {
             is UiEffect.ShowToast -> Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-
             is UiEffect.NavigateToMovieDetail -> navigateToMovieDetail(it.movieModel)
         }
     }
@@ -42,21 +40,18 @@ fun HomeScreen(
             .fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
-        if (uiState.list.isEmpty() && !uiState.isLoading) {
-            EmptyScreen()
-        } else {
-            HomeScreenContent(
-                moviesItems = uiState.list,
-                onAddToBasketButtonClick = { onAction(UiAction.OnAddToBasketClick(it)) },
-                imageClick = { navigateToMovieDetail(it) },
-                onCategoryClick = { onAction(UiAction.OnCategoryClick(it)) },
-                isCategorySelected = { it == uiState.selectedCategory },
-                searchTextValue = uiState.searchText,
-                onSearchValueChange = { onAction(UiAction.OnSearchValueChange(it)) },
-                selectedSortType = uiState.selectedSortType,
-                onSortTypeSelect = { onAction(UiAction.OnSortTypeChange(it)) }
-            )
-        }
+        HomeScreenContent(
+            moviesItems = uiState.movies,
+            onAddToBasketButtonClick = { onAction(UiAction.OnAddToBasketClick(it)) },
+            imageClick = { navigateToMovieDetail(it) },
+            categories = uiState.categories,
+            onCategoryClick = { onAction(UiAction.OnCategoryClick(it)) },
+            selectedCategory = uiState.selectedCategory,
+            searchTextValue = uiState.searchText,
+            onSearchValueChange = { onAction(UiAction.OnSearchValueChange(it)) },
+            selectedSortType = uiState.selectedSortType,
+            onSortTypeSelect = { onAction(UiAction.OnSortTypeChange(it)) }
+        )
 
         if (uiState.isLoading) LoadingBar()
     }

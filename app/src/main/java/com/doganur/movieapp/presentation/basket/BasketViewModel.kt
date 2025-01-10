@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.doganur.movieapp.common.Resource
 import com.doganur.movieapp.domain.usecase.AddBasketUseCase
 import com.doganur.movieapp.domain.usecase.DeleteMovieCartUseCase
-import com.doganur.movieapp.domain.usecase.GetBasketUseCase
 import com.doganur.movieapp.domain.usecase.GetGroupedBasketUseCase
 import com.doganur.movieapp.presentation.basket.BasketContract.UiAction
 import com.doganur.movieapp.presentation.basket.BasketContract.UiEffect
@@ -23,7 +22,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BasketViewModel @Inject constructor(
-    private val getBasketUseCase: GetBasketUseCase,
     private val deleteMovieCartUseCase: DeleteMovieCartUseCase,
     private val addBasketUseCase: AddBasketUseCase,
     private val getGroupedBasketUseCase: GetGroupedBasketUseCase
@@ -57,7 +55,7 @@ class BasketViewModel @Inject constructor(
             is Resource.Success -> {
                 updateUiState {
                     copy(
-                        list = result.data,
+                        list = result.data.sortedBy { it.cartId },
                         isLoading = false
                     )
                 }
@@ -78,11 +76,12 @@ class BasketViewModel @Inject constructor(
         )
         when (result) {
             is Resource.Success -> {
-                emitUiEffect(UiEffect.ShowToast(message = result.data))
+                getBasket() // Sepeti yenile
+                //emitUiEffect(UiEffect.ShowToast(message = result.data))
             }
 
             is Resource.Fail -> {
-                emitUiEffect(UiEffect.ShowToast(message = result.message))
+                //emitUiEffect(UiEffect.ShowToast(message = result.message))
             }
         }
     }
@@ -110,6 +109,7 @@ class BasketViewModel @Inject constructor(
                     getBasket() // Sepeti yenile
                     emitUiEffect(UiEffect.ShowToast(message = "Miktar artırıldı"))
                 }
+
                 is Resource.Fail -> {
                     emitUiEffect(UiEffect.ShowToast(message = result.message))
                 }
@@ -122,16 +122,12 @@ class BasketViewModel @Inject constructor(
     ) = viewModelScope.launch {
         val currentMovie = _uiState.value.list.find { it.cartId == cartId }
 
+        deleteMovieCart(cartId)
+
         currentMovie?.let {
             if (it.orderAmount > 1) {
-                // Eğer miktar 1'den büyükse, bir tane sil
-                deleteMovieCart(cartId)
-                getBasket() // Sepeti yenile
                 emitUiEffect(UiEffect.ShowToast(message = "Miktar azaltıldı"))
             } else {
-                // Eğer miktar 1 ise, ürünü tamamen sil
-                deleteMovieCart(cartId)
-                getBasket() // Sepeti yenile
                 emitUiEffect(UiEffect.ShowToast(message = "Ürün sepetten kaldırıldı"))
             }
         }
