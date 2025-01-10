@@ -1,5 +1,6 @@
 package com.doganur.movieapp.presentation.moviedetail
 
+import com.doganur.movieapp.data.model.FavoriteMovie
 import com.doganur.movieapp.domain.model.MovieModel
 
 object MovieDetailContract {
@@ -14,13 +15,15 @@ object MovieDetailContract {
         val year: Int? = null,
         val director: String? = null,
         val description: String? = null,
-        val similarMovies: List<MovieModel>? = null
+        val similarMovies: List<MovieModel>? = null,
+        val isFavorite: Boolean = false
     )
 
     sealed interface UiAction {
 
         data class OnAddToBasketClick(val movieModel: MovieModel) : UiAction
         data class OnSimilarMovieClick(val movieModel: MovieModel) : UiAction
+        data class OnChangeFavoriteMovieClick(val favoriteMovie: FavoriteMovie) : UiAction
     }
 
     sealed interface UiEffect {

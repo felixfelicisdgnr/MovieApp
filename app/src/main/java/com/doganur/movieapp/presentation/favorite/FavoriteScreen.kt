@@ -28,10 +28,13 @@ fun FavoriteScreen(
             .fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        if (uiState.list.isEmpty() && !uiState.isLoading) {
+        if (uiState.favoriteList.isEmpty() && !uiState.isLoading) {
             EmptyScreen()
         } else {
-            FavoriteScreenContent()
+            FavoriteScreenContent(
+                favoriteList = uiState.favoriteList,
+                onFavoriteClick = {onAction(UiAction.onFavoriteClick(it))}
+            )
         }
 
         if (uiState.isLoading) LoadingBar()

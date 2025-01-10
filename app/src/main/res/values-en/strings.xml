@@ -12,6 +12,7 @@
     <string name="cont_desc_icon_sell">Price icon</string>
     <string name="cont_desc_icon_search">Search icon</string>
     <string name="cont_desc_icon_basket">Basket icon</string>
+    <string name="cont_desc_icon_favorite">Favorite icon</string>
     <string name="amount">Amount</string>
     <string name="unit_price">Unit Price</string>
     <string name="category">Category: </string>

@@ -1,6 +1,7 @@
 package com.doganur.movieapp.presentation.favorite.preview
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import com.doganur.movieapp.data.model.FavoriteMovie
 import com.doganur.movieapp.presentation.favorite.FavoriteContract
 
 class FavoriteScreenPreviewProvider : PreviewParameterProvider<FavoriteContract.UiState> {
@@ -8,15 +9,138 @@ class FavoriteScreenPreviewProvider : PreviewParameterProvider<FavoriteContract.
         get() = sequenceOf(
             FavoriteContract.UiState(
                 isLoading = true,
-                list = emptyList(),
+                favoriteList = listOf(
+                    FavoriteMovie(
+                        id = 1,
+                        name = "Movie 1",
+                        image = "https://image",
+                        category = "Action",
+                        rating = 8.0,
+                        year = 2021,
+                        director = "Director 1",
+                        description = "Description 1"
+                    ),
+                    FavoriteMovie(
+                        id = 1,
+                        name = "Movie 1",
+                        image = "https://image",
+                        category = "Action",
+                        rating = 8.0,
+                        year = 2021,
+                        director = "Director 1",
+                        description = "Description 1"
+                    ),
+                    FavoriteMovie(
+                        id = 1,
+                        name = "Movie 1",
+                        image = "https://image",
+                        category = "Action",
+                        rating = 8.0,
+                        year = 2021,
+                        director = "Director 1",
+                        description = "Description 1"
+                    ),
+                    FavoriteMovie(
+                        id = 1,
+                        name = "Movie 1",
+                        image = "https://image",
+                        category = "Action",
+                        rating = 8.0,
+                        year = 2021,
+                        director = "Director 1",
+                        description = "Description 1"
+                    )
+                ),
             ),
             FavoriteContract.UiState(
                 isLoading = false,
-                list = emptyList(),
+                favoriteList = listOf(
+                    FavoriteMovie(
+                        id = 1,
+                        name = "Movie 1",
+                        image = "https://image",
+                        category = "Action",
+                        rating = 8.0,
+                        year = 2021,
+                        director = "Director 1",
+                        description = "Description 1"
+                    ),
+                    FavoriteMovie(
+                        id = 1,
+                        name = "Movie 1",
+                        image = "https://image",
+                        category = "Action",
+                        rating = 8.0,
+                        year = 2021,
+                        director = "Director 1",
+                        description = "Description 1"
+                    ),
+                    FavoriteMovie(
+                        id = 1,
+                        name = "Movie 1",
+                        image = "https://image",
+                        category = "Action",
+                        rating = 8.0,
+                        year = 2021,
+                        director = "Director 1",
+                        description = "Description 1"
+                    ),
+                    FavoriteMovie(
+                        id = 1,
+                        name = "Movie 1",
+                        image = "https://image",
+                        category = "Action",
+                        rating = 8.0,
+                        year = 2021,
+                        director = "Director 1",
+                        description = "Description 1"
+                    )
+                ),
             ),
             FavoriteContract.UiState(
                 isLoading = false,
-                list = listOf("Item 1", "Item 2", "Item 3")
+                favoriteList = listOf(
+                    FavoriteMovie(
+                        id = 1,
+                        name = "Movie 1",
+                        image = "https://image",
+                        category = "Action",
+                        rating = 8.0,
+                        year = 2021,
+                        director = "Director 1",
+                        description = "Description 1"
+                    ),
+                    FavoriteMovie(
+                        id = 1,
+                        name = "Movie 1",
+                        image = "https://image",
+                        category = "Action",
+                        rating = 8.0,
+                        year = 2021,
+                        director = "Director 1",
+                        description = "Description 1"
+                    ),
+                    FavoriteMovie(
+                        id = 1,
+                        name = "Movie 1",
+                        image = "https://image",
+                        category = "Action",
+                        rating = 8.0,
+                        year = 2021,
+                        director = "Director 1",
+                        description = "Description 1"
+                    ),
+                    FavoriteMovie(
+                        id = 1,
+                        name = "Movie 1",
+                        image = "https://image",
+                        category = "Action",
+                        rating = 8.0,
+                        year = 2021,
+                        director = "Director 1",
+                        description = "Description 1"
+                    )
+                )
             ),
         )
 }

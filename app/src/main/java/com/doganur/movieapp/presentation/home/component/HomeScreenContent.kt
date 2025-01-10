@@ -23,7 +23,8 @@ fun HomeScreenContent(
     searchTextValue: String,
     onSearchValueChange: (String) -> Unit,
     selectedSortType: SortType,
-    onSortTypeSelect: (SortType) -> Unit
+    onSortTypeSelect: (SortType) -> Unit,
+    isLoading : Boolean
 ) {
     Column(
         modifier = Modifier
@@ -49,7 +50,7 @@ fun HomeScreenContent(
             onCategoryClick = onCategoryClick
         )
 
-        if (moviesItems.isEmpty()) {
+        if (moviesItems.isEmpty() && !isLoading) {
             EmptyScreen()
         } else {
             MovieList(

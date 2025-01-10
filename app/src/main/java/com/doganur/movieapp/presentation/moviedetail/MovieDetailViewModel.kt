@@ -5,8 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import com.doganur.movieapp.common.Resource
+import com.doganur.movieapp.data.model.FavoriteMovie
 import com.doganur.movieapp.domain.model.MovieModel
 import com.doganur.movieapp.domain.usecase.AddBasketUseCase
+import com.doganur.movieapp.domain.usecase.AddMovieToFavoriteUseCase
+import com.doganur.movieapp.domain.usecase.CheckIsFavoriteMovieUseCase
+import com.doganur.movieapp.domain.usecase.DeleteFavoriteMovieUseCase
 import com.doganur.movieapp.domain.usecase.GetMoviesUseCase
 import com.doganur.movieapp.navigation.Screen
 import com.doganur.movieapp.presentation.moviedetail.MovieDetailContract.UiAction
@@ -27,7 +31,10 @@ import javax.inject.Inject
 class MovieDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val getMoviesUseCase: GetMoviesUseCase,
-    private val addBasketUseCase: AddBasketUseCase
+    private val addBasketUseCase: AddBasketUseCase,
+    private val addFavoriteMoviesUseCase: AddMovieToFavoriteUseCase,
+    private val deleteFavoriteMovieUseCase: DeleteFavoriteMovieUseCase,
+    private val checkIsFavoriteMovieUseCase: CheckIsFavoriteMovieUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(UiState())
@@ -53,6 +60,7 @@ class MovieDetailViewModel @Inject constructor(
             )
         }
 
+        updateFavoriteState()
         getSimilarMovies(movieDetail.category)
     }
 
@@ -65,6 +73,8 @@ class MovieDetailViewModel @Inject constructor(
             }
 
             is UiAction.OnAddToBasketClick -> addToBasket(uiAction.movieModel)
+
+            is UiAction.OnChangeFavoriteMovieClick -> changeFavoriteState(uiAction.favoriteMovie)
         }
     }
 
@@ -104,6 +114,27 @@ class MovieDetailViewModel @Inject constructor(
         when (result) {
             is Resource.Success -> emitUiEffect(UiEffect.ShowToast(message = result.data))
             is Resource.Fail -> emitUiEffect(UiEffect.ShowToast(message = result.message))
+        }
+    }
+
+    private fun changeFavoriteState(favoriteMovie: FavoriteMovie) {
+        viewModelScope.launch {
+            if(uiState.value.isFavorite) {
+                deleteFavoriteMovieUseCase(favoriteMovie = favoriteMovie)
+            } else {
+                addFavoriteMoviesUseCase(favoriteMovie = favoriteMovie)
+            }
+
+            updateFavoriteState()
+        }
+    }
+
+    private fun updateFavoriteState(){
+        viewModelScope.launch {
+            val isFavorite = checkIsFavoriteMovieUseCase(uiState.value.movieId!!)
+            updateUiState {
+                copy(isFavorite = isFavorite)
+            }
         }
     }
 

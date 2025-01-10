@@ -41,6 +41,7 @@ fun HomeScreen(
         contentAlignment = Alignment.Center,
     ) {
         HomeScreenContent(
+            isLoading = uiState.isLoading,
             moviesItems = uiState.movies,
             onAddToBasketButtonClick = { onAction(UiAction.OnAddToBasketClick(it)) },
             imageClick = { navigateToMovieDetail(it) },

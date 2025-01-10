@@ -1,24 +1,27 @@
 package com.doganur.movieapp.presentation.favorite.component
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
+import com.doganur.movieapp.data.model.FavoriteMovie
 import com.doganur.movieapp.presentation.theme.AppTheme
 
 @Composable
-fun FavoriteScreenContent() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
+fun FavoriteScreenContent(
+    favoriteList: List<FavoriteMovie>,
+    onFavoriteClick: (FavoriteMovie) -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "Favorite Content",
-            fontSize = 24.sp,
+        FavoriteList(
+            favoriteList = favoriteList,
+            onFavoriteClick = onFavoriteClick
         )
     }
 }
@@ -27,6 +30,6 @@ fun FavoriteScreenContent() {
 @Composable
 fun FavoriteScreenContentPreview() {
     AppTheme {
-        FavoriteScreenContent()
+
     }
 }

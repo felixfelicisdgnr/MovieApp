@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.doganur.movieapp.data.model.FavoriteMovie
 import com.doganur.movieapp.domain.model.MovieModel
 import com.doganur.movieapp.presentation.theme.AppTheme
 
@@ -25,7 +26,9 @@ fun MovieDetailScreenContent(
     price: String,
     similarMovies: List<MovieModel>,
     addOnBasketButtonClick: (MovieModel) -> Unit,
-    onSimilarMovieClick: (MovieModel) -> Unit
+    onSimilarMovieClick: (MovieModel) -> Unit,
+    onFavoriteIconClick: (FavoriteMovie) -> Unit,
+    isFavorite: Boolean
 ) {
     Column(
         modifier = Modifier
@@ -35,13 +38,16 @@ fun MovieDetailScreenContent(
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         MovieInformationSection(
+            movieId = movieId,
             name = name,
             image = image,
             description = description,
             category = category,
             rating = rating,
             year = year,
-            director = director
+            director = director,
+            onFavoriteIconClick = onFavoriteIconClick,
+            isFavorite = isFavorite
         )
 
         Column {
@@ -138,7 +144,9 @@ fun MovieDetailScreenContentPreview() {
             addOnBasketButtonClick = {},
             similarMovies = similarMovies,
             onSimilarMovieClick = {},
-            movieId = 1
+            movieId = 1,
+            onFavoriteIconClick = {},
+            isFavorite = false
         )
     }
 }

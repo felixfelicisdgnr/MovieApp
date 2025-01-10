@@ -1,6 +1,7 @@
 package com.doganur.movieapp.domain.repository
 
 import com.doganur.movieapp.common.Resource
+import com.doganur.movieapp.data.model.FavoriteMovie
 import com.doganur.movieapp.domain.model.MovieCartModel
 import com.doganur.movieapp.domain.model.MovieModel
 
@@ -24,4 +25,14 @@ interface MainRepository {
     suspend fun deleteMovieCart(
         cartId: Int,
     ): Resource<String>
+
+    suspend fun addFavorite(
+        favoriteMovie: FavoriteMovie
+    )
+
+    suspend fun deleteFavorite(
+        favoriteMovie: FavoriteMovie
+    )
+
+    suspend fun getFavoriteMovies(): List<FavoriteMovie>
 }

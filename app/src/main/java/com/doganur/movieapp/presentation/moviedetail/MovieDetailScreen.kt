@@ -74,6 +74,10 @@ fun MovieDetailScreen(
                 addOnBasketButtonClick = { onAction(UiAction.OnAddToBasketClick(movieModel = it)) },
                 similarMovies = uiState.similarMovies ?: emptyList(),
                 onSimilarMovieClick = { onAction(UiAction.OnSimilarMovieClick(it)) },
+                onFavoriteIconClick = {
+                    onAction(UiAction.OnChangeFavoriteMovieClick(it))
+                },
+                isFavorite = uiState.isFavorite
             )
         }
 

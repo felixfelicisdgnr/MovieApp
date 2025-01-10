@@ -11,6 +11,7 @@
     <string name="cont_desc_icon_sell">Fiyat ikonu</string>
     <string name="cont_desc_icon_search">Arama ikonu</string>
     <string name="cont_desc_icon_basket">Sepet ikonu</string>
+    <string name="cont_desc_icon_favorite">Favori ikonu</string>
     <string name="amount">Adet</string>
     <string name="unit_price">Adet fiyatı: </string>
     <string name="category">Kategori: </string>

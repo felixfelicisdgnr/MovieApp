@@ -1,12 +1,16 @@
 package com.doganur.movieapp.presentation.favorite
 
+import com.doganur.movieapp.data.model.FavoriteMovie
+
 object FavoriteContract {
     data class UiState(
         val isLoading: Boolean = false,
-        val list: List<String> = emptyList(),
+        val favoriteList: List<FavoriteMovie> = emptyList(),
     )
 
-    sealed class UiAction
+    sealed interface UiAction {
+        data class onFavoriteClick(val favoriteMovie: FavoriteMovie) : UiAction
+    }
 
-    sealed class UiEffect
+    sealed interface UiEffect
 }
