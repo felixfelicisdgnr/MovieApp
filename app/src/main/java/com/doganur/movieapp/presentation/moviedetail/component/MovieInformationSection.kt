@@ -63,8 +63,8 @@ fun MovieInformationSection(
                 modifier = Modifier
                     .clip(shape = RoundedCornerShape(15.dp))
                     .size(
-                        width = 150.dp,
-                        height = 200.dp
+                        width = 140.dp,
+                        height = 180.dp
                     ),
                 model = image,
                 contentDescription = stringResource(id = R.string.cont_desc_image_movie),
@@ -76,13 +76,13 @@ fun MovieInformationSection(
                     .padding(start = 10.dp),
                 text = name,
                 style = UrbanistBoldTextStyle.copy(
-                    fontSize = 24.sp,
+                    fontSize = 20.sp,
                     color = BlackColor,
                     textAlign = TextAlign.Start
                 )
             )
 
-            Spacer(Modifier.weight(1f))
+            Spacer(Modifier.weight(0.7f))
 
             Icon(
                 painter = painterResource(id = R.drawable.ic_favorite),

@@ -22,7 +22,7 @@
     <string name="add_basket">Sepete Ekle</string>
     <string name="similar_movies">Benzer Filmler</string>
     <string name="search_hint">Film adıyla arama yapabilirsiniz…</string>
-    <string name="total_price">Toplam</string>
+    <string name="total_price">Sepet Toplamı</string>
     <string name="confirm_basket">Sepeti Onayla</string>
     <string name="basket">Sepet</string>
     <string name="favorite_movie">Favori Filmler</string>

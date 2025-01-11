@@ -27,15 +27,13 @@ fun BasketList(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        item { Spacer(modifier = Modifier.height(10.dp)) }
-
         itemsIndexed(basketList) { _, item ->
             BasketItem(
                 image = item.image,
                 name = item.name,
                 unitPrice = item.priceStr,
                 orderAmount = item.orderAmountStr,
-                productTotalPrice = item.productTotalPriceStr,
+                productTotalPrice = (item.price * item.orderAmount).toString(),
                 onIncreaseButtonClick = { onIncreaseButtonClick(item) },
                 onDecreaseButtonClick = { onDecreaseButtonClick(item) }
             )

@@ -104,7 +104,6 @@ class BasketViewModel @Inject constructor(
             when (result) {
                 is Resource.Success -> {
                     getBasket() // Sepeti yenile
-                    emitUiEffect(UiEffect.ShowToast(message = "Miktar artırıldı"))
                 }
 
                 is Resource.Fail -> {
@@ -117,17 +116,8 @@ class BasketViewModel @Inject constructor(
     private fun decreaseMovieAmount(
         cartId: Int
     ) = viewModelScope.launch {
-        val currentMovie = _uiState.value.list.find { it.cartId == cartId }
 
         deleteMovieCart(cartId)
-
-        currentMovie?.let {
-            if (it.orderAmount > 1) {
-                emitUiEffect(UiEffect.ShowToast(message = "Miktar azaltıldı"))
-            } else {
-                emitUiEffect(UiEffect.ShowToast(message = "Ürün sepetten kaldırıldı"))
-            }
-        }
     }
 
     private fun updateUiState(block: UiState.() -> UiState) {

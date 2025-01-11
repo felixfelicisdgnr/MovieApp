@@ -40,7 +40,6 @@ fun FavoriteItem(
     } else {
         Color.Black
     }
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -54,7 +53,7 @@ fun FavoriteItem(
             modifier = Modifier
                 .size(
                     width = 130.dp,
-                    height = 150.dp
+                    height = 140.dp
                 )
                 .padding(all = 10.dp)
                 .clip(shape = RoundedCornerShape(10.dp))

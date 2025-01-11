@@ -49,7 +49,7 @@ fun BasketItemInfoSection(
                 .background(Color.Gray)
                 .width(100.dp),
             model = image,
-            contentDescription = "stringResource(id = R.string.cont_desc_image_movie)",
+            contentDescription = stringResource(id = R.string.cont_desc_image_movie),
             contentScale = ContentScale.Crop
         )
 
