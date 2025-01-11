@@ -11,14 +11,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.doganur.movieapp.R
-import com.doganur.movieapp.common.base.MyAppButton
+import com.doganur.movieapp.common.base.components.MyAppButton
+import com.doganur.movieapp.domain.model.MovieModel
+import com.doganur.movieapp.presentation.theme.AppTheme
 import com.doganur.movieapp.presentation.theme.BlackColor
 import com.doganur.movieapp.presentation.theme.UrbanistBoldTextStyle
 
 @Composable
 fun AddMovieBasketSection(
+    movieModel: MovieModel,
     price: String,
-    addBasketButtonClick: () -> Unit
+    addBasketButtonClick: (MovieModel) -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -30,14 +33,14 @@ fun AddMovieBasketSection(
             modifier = Modifier,
             text = price + "₺",
             style = UrbanistBoldTextStyle.copy(
-                fontSize = 30.sp,
+                fontSize = 26.sp,
                 color = BlackColor
             )
         )
 
         MyAppButton(
             text = stringResource(id = R.string.add_basket),
-            onClick = { addBasketButtonClick() }
+            onClick = { addBasketButtonClick(movieModel) }
         )
     }
 }
@@ -45,8 +48,22 @@ fun AddMovieBasketSection(
 @Composable
 @Preview
 fun AddMovieBasketSectionPreview() {
-    AddMovieBasketSection(
-        price = "10.0",
-        addBasketButtonClick = {}
-    )
+    AppTheme {
+        AddMovieBasketSection(
+            price = "10.0",
+            addBasketButtonClick = {},
+            movieModel = MovieModel(
+                id = 1,
+                name = "Movie Name",
+                image = "https://www.google.com",
+                category = "Action",
+                rating = 8.0,
+                year = 2021,
+                director = "Director Name",
+                description = "Description",
+                price = 10,
+                priceStr = "10.0"
+            )
+        )
+    }
 }

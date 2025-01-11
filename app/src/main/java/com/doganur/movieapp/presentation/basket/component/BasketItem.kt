@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.doganur.movieapp.presentation.theme.AppTheme
 
 @Composable
 fun BasketItem(
@@ -17,15 +18,14 @@ fun BasketItem(
     name: String,
     unitPrice: String,
     orderAmount: String,
-    totalPrice: String,
-    onDeleteButtonClick: () -> Unit,
+    productTotalPrice: String,
     onIncreaseButtonClick: () -> Unit,
     onDecreaseButtonClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(170.dp),
+            .height(150.dp),
         shape = RoundedCornerShape(8.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White,
@@ -45,11 +45,10 @@ fun BasketItem(
         )
 
         BasketItemControlSection(
-            onDeleteButtonClick = onDeleteButtonClick,
             onIncreaseButtonClick = onIncreaseButtonClick,
             onDecreaseButtonClick = onDecreaseButtonClick,
             orderAmount = orderAmount,
-            totalPrice = totalPrice
+            totalPrice = productTotalPrice
         )
     }
 }
@@ -57,14 +56,15 @@ fun BasketItem(
 @Composable
 @Preview
 fun BasketItemPreview() {
-    BasketItem(
-        image = "https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg",
-        name = "Harry Potter",
-        unitPrice = "50",
-        orderAmount = "1",
-        totalPrice = "₺ 50",
-        onDeleteButtonClick = {},
-        onIncreaseButtonClick = {},
-        onDecreaseButtonClick = {}
-    )
+    AppTheme {
+        BasketItem(
+            image = "https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg",
+            name = "Harry Potter",
+            unitPrice = "50",
+            orderAmount = "1",
+            productTotalPrice = "₺ 50",
+            onIncreaseButtonClick = {},
+            onDecreaseButtonClick = {}
+        )
+    }
 }

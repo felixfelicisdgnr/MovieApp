@@ -1,11 +1,9 @@
 package com.doganur.movieapp.presentation.basket.component
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
@@ -15,34 +13,27 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.doganur.movieapp.domain.model.MovieCartModel
 import com.doganur.movieapp.presentation.theme.AppTheme
-import com.doganur.movieapp.presentation.theme.PrimaryColor
 
 @Composable
 fun BasketList(
     basketList: List<MovieCartModel>,
-    onDeleteButtonClick: (MovieCartModel) -> Unit = {},
     onIncreaseButtonClick: (MovieCartModel) -> Unit = {},
     onDecreaseButtonClick: (MovieCartModel) -> Unit = {}
 ) {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
-            .background(PrimaryColor)
-            .height(700.dp)
-            .padding(all = 10.dp),
+            .height(500.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        item { Spacer(modifier = Modifier.height(10.dp)) }
-
         itemsIndexed(basketList) { _, item ->
             BasketItem(
                 image = item.image,
                 name = item.name,
                 unitPrice = item.priceStr,
                 orderAmount = item.orderAmountStr,
-                totalPrice = item.priceStr,
-                onDeleteButtonClick = { onDeleteButtonClick(item) },
+                productTotalPrice = (item.price * item.orderAmount).toString(),
                 onIncreaseButtonClick = { onIncreaseButtonClick(item) },
                 onDecreaseButtonClick = { onDecreaseButtonClick(item) }
             )
@@ -68,7 +59,8 @@ fun BasketListPreview() {
             director = "Director 1",
             description = "Description 1",
             orderAmount = 1,
-            orderAmountStr = "1"
+            orderAmountStr = "1",
+            productTotalPriceStr = "10.00"
         ),
         MovieCartModel(
             cartId = 1,
@@ -82,7 +74,8 @@ fun BasketListPreview() {
             director = "Director 1",
             description = "Description 1",
             orderAmount = 1,
-            orderAmountStr = "1"
+            orderAmountStr = "1",
+            productTotalPriceStr = "10.00"
         ),
         MovieCartModel(
             cartId = 1,
@@ -96,7 +89,8 @@ fun BasketListPreview() {
             director = "Director 1",
             description = "Description 1",
             orderAmount = 1,
-            orderAmountStr = "1"
+            orderAmountStr = "1",
+            productTotalPriceStr = "10.00"
         ),
         MovieCartModel(
             cartId = 1,
@@ -110,7 +104,9 @@ fun BasketListPreview() {
             director = "Director 1",
             description = "Description 1",
             orderAmount = 1,
-            orderAmountStr = "1"
+            orderAmountStr = "1",
+
+            productTotalPriceStr = "10.00"
         ),
         MovieCartModel(
             cartId = 1,
@@ -124,7 +120,8 @@ fun BasketListPreview() {
             director = "Director 1",
             description = "Description 1",
             orderAmount = 1,
-            orderAmountStr = "1"
+            orderAmountStr = "1",
+            productTotalPriceStr = "10.00"
         )
     )
 

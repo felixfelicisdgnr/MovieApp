@@ -101,6 +101,9 @@ dependencies {
 
     // WorkManager
     implementation(libs.workManager)
+
+    //Splash Screen
+    implementation(libs.androidx.splashscreen)
 }
 
 detekt {

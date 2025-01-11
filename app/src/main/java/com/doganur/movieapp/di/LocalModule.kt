@@ -2,8 +2,8 @@ package com.doganur.movieapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.doganur.movieapp.data.source.local.MainDao
-import com.doganur.movieapp.data.source.local.MainRoomDB
+import com.doganur.movieapp.data.source.local.MovieDao
+import com.doganur.movieapp.data.source.local.MovieRoomDB
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,14 +15,14 @@ import dagger.hilt.components.SingletonComponent
 object LocalModule {
 
     @Provides
-    fun provideRoomDatabase(@ApplicationContext context: Context): MainRoomDB {
+    fun provideRoomDatabase(@ApplicationContext context: Context): MovieRoomDB {
         return Room.databaseBuilder(
             context,
-            MainRoomDB::class.java,
-            MainRoomDB::class.simpleName
+            MovieRoomDB::class.java,
+            MovieRoomDB::class.simpleName
         ).build()
     }
 
     @Provides
-    fun provideMainDao(database: MainRoomDB): MainDao = database.mainDao()
+    fun provideMainDao(database: MovieRoomDB): MovieDao = database.mainDao()
 }

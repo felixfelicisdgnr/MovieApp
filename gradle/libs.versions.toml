@@ -53,6 +53,7 @@ kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-seria
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilVersion" }
 detekt-formatting = { group = "io.gitlab.arturbosch", name = "detekt-formatting", version.ref = "detekt" }
 workManager = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "workManagerVersion" }
+androidx-splashscreen = "androidx.core:core-splashscreen:1.0.1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

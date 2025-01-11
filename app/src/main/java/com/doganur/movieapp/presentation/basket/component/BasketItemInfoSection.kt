@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.doganur.movieapp.R
+import com.doganur.movieapp.presentation.theme.AppTheme
 import com.doganur.movieapp.presentation.theme.UrbanistMediumTextStyle
 import com.doganur.movieapp.presentation.theme.UrbanistRegularTextStyle
 
@@ -48,7 +49,7 @@ fun BasketItemInfoSection(
                 .background(Color.Gray)
                 .width(100.dp),
             model = image,
-            contentDescription = "stringResource(id = R.string.cont_desc_image_movie)",
+            contentDescription = stringResource(id = R.string.cont_desc_image_movie),
             contentScale = ContentScale.Crop
         )
 
@@ -81,9 +82,11 @@ fun BasketItemInfoSection(
 @Preview
 @Composable
 fun BasketItemInfoSectionPreview() {
-    BasketItemInfoSection(
-        image = "https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg",
-        movieTitle = "Harry Potter",
-        moviePrice = "10.00"
-    )
+    AppTheme {
+        BasketItemInfoSection(
+            image = "https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg",
+            movieTitle = "Harry Potter",
+            moviePrice = "10.00"
+        )
+    }
 }

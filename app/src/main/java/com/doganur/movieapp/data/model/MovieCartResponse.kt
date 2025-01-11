@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class MovieCartResponse(
     @SerializedName("movie_cart")
-    var movieCartList: List<MovieCart>? = null
+    val movieCartList: List<MovieCart>? = null
 )

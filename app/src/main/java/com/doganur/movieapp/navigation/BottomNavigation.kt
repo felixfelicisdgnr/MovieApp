@@ -9,8 +9,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.doganur.movieapp.R
 import com.doganur.movieapp.navigation.Screen
 
 @Composable
@@ -19,7 +21,7 @@ fun BottomNavigation(
 ) {
     val items = listOf(
         BottomNavItem.Home,
-        BottomNavItem.Favourites,
+        BottomNavItem.Favorite,
         BottomNavItem.Basket
     )
 
@@ -29,9 +31,9 @@ fun BottomNavigation(
 
         items.forEach { item ->
             NavigationBarItem(
-                icon = { Icon(item.icon, contentDescription = item.title) },
-                label = { Text(text = item.title) },
-                selected = currentRoute == item.route::class.java.canonicalName, //cur
+                icon = { Icon(item.icon, contentDescription = stringResource( item.title)) },
+                label = { Text(text = stringResource(item.title) ) },
+                selected = currentRoute == item.route::class.java.canonicalName,
                 onClick = {
                     navController.navigate(item.route) {
                         popUpTo(navController.graph.startDestinationId)
@@ -45,24 +47,24 @@ fun BottomNavigation(
 
 sealed class BottomNavItem(
     val route: Screen,
-    val title: String,
+    val title: Int,
     val icon: ImageVector
 ) {
     data object Home : BottomNavItem(
         route = Screen.Home,
-        title = "Ana Sayfa",
+        title =  R.string.home_page,
         icon = Icons.Default.Home
     )
-    
-    data object Favourites : BottomNavItem(
-        route = Screen.Favourites,
-        title = "Favoriler",
+
+    data object Favorite : BottomNavItem(
+        route = Screen.Favorite,
+        title = R.string.favorite_page,
         icon = Icons.Default.Favorite
     )
-    
+
     data object Basket : BottomNavItem(
         route = Screen.Basket,
-        title = "Sepet",
+        title = R.string.basket_page,
         icon = Icons.Default.ShoppingCart
     )
 } 

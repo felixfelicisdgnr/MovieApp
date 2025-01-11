@@ -1,47 +1,72 @@
 package com.doganur.movieapp.presentation.moviedetail.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.doganur.movieapp.R
 import com.doganur.movieapp.domain.model.MovieModel
 import com.doganur.movieapp.presentation.theme.AppTheme
+import com.doganur.movieapp.presentation.theme.BlackColor
+import com.doganur.movieapp.presentation.theme.UrbanistSemiBoldTextStyle
 
 @Composable
 fun SameMovieCategoriesSection(
-    categoryList: List<MovieModel>
+    categoryList: List<MovieModel>,
+    onMovieClick: (MovieModel) -> Unit
 ) {
-    LazyRow(
+    Column(
         modifier = Modifier
-            .background(Color.Gray)
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(space = 5.dp),
-        verticalAlignment = Alignment.CenterVertically
+            .padding(top = 5.dp)
     ) {
-        items(categoryList) { movie ->
-            AsyncImage(
-                modifier = Modifier
-                    .clip(shape = RoundedCornerShape(10.dp))
-                    .background(Color.Green)
-                    .width(130.dp)
-                    .height(180.dp),
-                model = movie.image,
-                contentDescription = movie.name,
-                contentScale = ContentScale.Crop
+        Text(
+            text = stringResource(id = R.string.similar_movies),
+            style = UrbanistSemiBoldTextStyle.copy(
+                fontSize = 18.sp,
+                color = BlackColor
             )
+        )
+
+        LazyRow(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(space = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            items(categoryList) { movie ->
+                AsyncImage(
+                    model = movie.image,
+                    contentDescription = movie.name,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .clip(shape = RoundedCornerShape(10.dp))
+                        .background(Color.Green)
+                        .width(130.dp)
+                        .height(180.dp)
+                        .clickable {
+                            onMovieClick(movie)
+                        }
+                )
+            }
         }
     }
 }
@@ -125,11 +150,10 @@ fun SameMovieCategoriesSectionPreview() {
         )
     )
 
-
     AppTheme {
         SameMovieCategoriesSection(
-            categoryList = categoryList
+            categoryList = categoryList,
+            onMovieClick = {}
         )
     }
-
 }

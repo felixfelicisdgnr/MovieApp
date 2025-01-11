@@ -4,6 +4,14 @@
     <string name="cont_desc_icon_add">Ekleme ikonu</string>
     <string name="cont_desc_icon_delete">Silme ikonu</string>
     <string name="cont_desc_icon_decrease">Azaltma ikonu</string>
+    <string name="cont_desc_icon_category">Kategori ikonu</string>
+    <string name="cont_desc_icon_calendar">Tarih ikonu</string>
+    <string name="cont_desc_icon_director">Yönetmen ikonu</string>
+    <string name="cont_desc_icon_rating">Puan ikonu</string>
+    <string name="cont_desc_icon_sell">Fiyat ikonu</string>
+    <string name="cont_desc_icon_search">Arama ikonu</string>
+    <string name="cont_desc_icon_basket">Sepet ikonu</string>
+    <string name="cont_desc_icon_favorite">Favori ikonu</string>
     <string name="amount">Adet</string>
     <string name="unit_price">Adet fiyatı: </string>
     <string name="category">Kategori: </string>
@@ -12,4 +20,15 @@
     <string name="director">Yönetmen: </string>
     <string name="description">Açıklama </string>
     <string name="add_basket">Sepete Ekle</string>
+    <string name="similar_movies">Benzer Filmler</string>
+    <string name="search_hint">Film adıyla arama yapabilirsiniz…</string>
+    <string name="total_price">Sepet Toplamı</string>
+    <string name="confirm_basket">Sepeti Onayla</string>
+    <string name="basket">Sepet</string>
+    <string name="favorite_movie">Favori Filmler</string>
+    <string name="no_products_in_cart">Sepetiniz de şu an ürün bulunmamaktadır.</string>
+    <string name="no_favorite_movie">Henüz favori bir film eklemediniz.</string>
+    <string name="home_page">Anasayfa</string>
+    <string name="basket_page">Sepet</string>
+    <string name="favorite_page">Favoriler</string>
 </resources>

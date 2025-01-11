@@ -23,8 +23,5 @@ sealed interface Screen {
     data object Basket : Screen
 
     @Serializable
-    data object Favourites : Screen
-
-    @Serializable
-    data class Profile(val id: Int) : Screen
+    data object Favorite : Screen
 }

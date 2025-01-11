@@ -1,5 +1,6 @@
 package com.doganur.movieapp.di
 
+import com.doganur.movieapp.common.Constants
 import com.doganur.movieapp.data.source.remote.MainService
 import dagger.Module
 import dagger.Provides
@@ -15,7 +16,7 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://kasimadalan.pe.hu/")
+            .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

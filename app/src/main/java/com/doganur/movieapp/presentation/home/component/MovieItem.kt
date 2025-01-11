@@ -1,15 +1,15 @@
 package com.doganur.movieapp.presentation.home.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -18,11 +18,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.doganur.movieapp.R
+import com.doganur.movieapp.presentation.theme.AppTheme
+import com.doganur.movieapp.presentation.theme.BlackColor
+import com.doganur.movieapp.presentation.theme.UrbanistBoldTextStyle
+import com.doganur.movieapp.presentation.theme.UrbanistSemiBoldTextStyle
 
 @Composable
 fun MovieItem(
@@ -30,12 +40,11 @@ fun MovieItem(
     movieTitle: String,
     moviePrice: String,
     addBasketButtonClick: () -> Unit,
-    imageClick : () -> Unit
+    imageClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
-            .width(135.dp)
-            .height(200.dp),
+            .width(170.dp),
         shape = RoundedCornerShape(8.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White,
@@ -44,17 +53,20 @@ fun MovieItem(
             disabledContentColor = Color.Gray,
         ),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 4.dp,
-            pressedElevation = 8.dp
+            defaultElevation = 2.dp,
+            pressedElevation = 4.dp
         )
     ) {
         AsyncImage(
             model = imageUrl,
-            contentDescription = "stringResource(id = R.string.cont_desc_image_movie)",
+            contentDescription = stringResource(id = R.string.cont_desc_image_movie),
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .height(140.dp)
-                .width(130.dp)
+                .height(200.dp)
+                .width(150.dp)
+                .padding(top = 10.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color.Red)
                 .align(Alignment.CenterHorizontally)
                 .clickable {
                     imageClick()
@@ -66,7 +78,11 @@ fun MovieItem(
                 .fillMaxWidth()
                 .align(Alignment.CenterHorizontally),
             text = movieTitle,
-            color = Color.Black,
+            style = UrbanistSemiBoldTextStyle.copy(
+                fontSize = 16.sp,
+                color = BlackColor,
+                textAlign = TextAlign.Center
+            )
         )
 
         Row(
@@ -80,16 +96,21 @@ fun MovieItem(
             Text(
                 modifier = Modifier,
                 text = moviePrice,
-                color = Color.Black,
+                style = UrbanistBoldTextStyle.copy(
+                    fontSize = 18.sp,
+                    color = BlackColor,
+                    textAlign = TextAlign.Start
+                )
             )
 
             IconButton(
                 onClick = { addBasketButtonClick() },
             ) {
                 Icon(
-                    imageVector = Icons.Rounded.Add,
-                    contentDescription = "stringResource(id = R.string.cont_desc_icon_add)",
-                    tint = Color.Black
+                    modifier = Modifier
+                        .size(24.dp),
+                    painter = painterResource(id = R.drawable.ic_shopping_basket),
+                    contentDescription = stringResource(id = R.string.cont_desc_icon_basket),
                 )
             }
         }
@@ -99,12 +120,14 @@ fun MovieItem(
 @Preview
 @Composable
 fun MovieItemPreview() {
-    MovieItem(
-        imageUrl = "https://image",
-        movieTitle = "Movie Name",
-        moviePrice = "10.0",
-        addBasketButtonClick = {},
-        imageClick = {}
-    )
+    AppTheme {
+        MovieItem(
+            imageUrl = "https://image",
+            movieTitle = "Movie Name",
+            moviePrice = "10.0",
+            addBasketButtonClick = {},
+            imageClick = {}
+        )
+    }
 }
 
