@@ -32,4 +32,10 @@
     <string name="home_page">Home Page</string>
     <string name="basket_page">Basket</string>
     <string name="favorite_page">Favorites</string>
+    <string name="sort_newest">Newest</string>
+    <string name="sort_price_asc">Price (Ascending)</string>
+    <string name="sort_price_desc">Price (Descending)</string>
+    <string name="sort_name_asc">Name (A-Z)</string>
+    <string name="sort_name_desc">Name (Z-A)</string>
+    <string name="sort_rate_asc">Rating (Ascending)</string>
 </resources>

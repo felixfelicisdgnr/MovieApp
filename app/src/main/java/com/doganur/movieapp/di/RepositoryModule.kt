@@ -1,7 +1,7 @@
 package com.doganur.movieapp.di
 
-import com.doganur.movieapp.data.repository.MainRepositoryImpl
-import com.doganur.movieapp.domain.repository.MainRepository
+import com.doganur.movieapp.data.repository.MovieRepositoryImpl
+import com.doganur.movieapp.domain.repository.MovieRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,5 +12,5 @@ import dagger.hilt.components.SingletonComponent
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun bindMainRepository(repositoryImpl: MainRepositoryImpl): MainRepository
+    abstract fun bindMainRepository(repositoryImpl: MovieRepositoryImpl): MovieRepository
 }

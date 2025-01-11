@@ -5,7 +5,7 @@ import com.doganur.movieapp.data.model.FavoriteMovie
 import com.doganur.movieapp.domain.model.MovieCartModel
 import com.doganur.movieapp.domain.model.MovieModel
 
-interface MainRepository {
+interface MovieRepository {
     suspend fun getAllMovies(): Resource<List<MovieModel>>
     suspend fun addBasket(
         name: String,

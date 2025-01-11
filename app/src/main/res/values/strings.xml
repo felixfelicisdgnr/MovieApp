@@ -31,4 +31,10 @@
     <string name="home_page">Anasayfa</string>
     <string name="basket_page">Sepet</string>
     <string name="favorite_page">Favoriler</string>
+    <string name="sort_newest">En Yeni</string>
+    <string name="sort_price_asc">Fiyat (Artan)</string>
+    <string name="sort_price_desc">Fiyat (Azalan)</string>
+    <string name="sort_name_asc">İsim (A-Z)</string>
+    <string name="sort_name_desc">İsim (Z-A)</string>
+    <string name="sort_rate_asc">Puan (Artan)</string>
 </resources>

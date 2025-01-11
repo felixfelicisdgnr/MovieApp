@@ -8,7 +8,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-interface MainService {
+interface MovieService {
     @GET("movies/getAllMovies.php")
     suspend fun getAllMovies(): GetAllMoviesResponse
 

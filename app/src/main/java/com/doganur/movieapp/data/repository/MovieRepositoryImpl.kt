@@ -3,22 +3,22 @@ package com.doganur.movieapp.data.repository
 import com.doganur.movieapp.common.Resource
 import com.doganur.movieapp.data.model.FavoriteMovie
 import com.doganur.movieapp.data.source.local.MovieDao
-import com.doganur.movieapp.data.source.remote.MainService
+import com.doganur.movieapp.data.source.remote.MovieService
 import com.doganur.movieapp.domain.mapper.mapToMovieCartModelList
 import com.doganur.movieapp.domain.mapper.mapToMovieModelList
 import com.doganur.movieapp.domain.model.MovieCartModel
 import com.doganur.movieapp.domain.model.MovieModel
-import com.doganur.movieapp.domain.repository.MainRepository
+import com.doganur.movieapp.domain.repository.MovieRepository
 import okio.EOFException
 import javax.inject.Inject
 
-class MainRepositoryImpl @Inject constructor(
-    private val mainService: MainService,
+class MovieRepositoryImpl @Inject constructor(
+    private val movieService: MovieService,
     private val movieDao: MovieDao,
-) : MainRepository {
+) : MovieRepository {
     override suspend fun getAllMovies(): Resource<List<MovieModel>> {
         return try {
-            val response = mainService.getAllMovies()
+            val response = movieService.getAllMovies()
             Resource.Success(response.mapToMovieModelList())
         } catch (e: Exception) {
             Resource.Fail(e.message.orEmpty())
@@ -36,7 +36,7 @@ class MainRepositoryImpl @Inject constructor(
         description: String,
     ): Resource<String> {
         return try {
-            val response = mainService.addCartBasket(
+            val response = movieService.addCartBasket(
                 name = name,
                 image = image,
                 price = price,
@@ -61,7 +61,7 @@ class MainRepositoryImpl @Inject constructor(
         username: String,
     ): Resource<List<MovieCartModel>> {
         return try {
-            val response = mainService.getMovieCart(
+            val response = movieService.getMovieCart(
                 userName = "doganur_aydeniz"
             )
             Resource.Success(response.mapToMovieCartModelList())
@@ -76,7 +76,7 @@ class MainRepositoryImpl @Inject constructor(
         cartId: Int,
     ): Resource<String> {
         return try {
-            val response = mainService.deleteMovieCart(
+            val response = movieService.deleteMovieCart(
                 cartId = cartId
             )
 

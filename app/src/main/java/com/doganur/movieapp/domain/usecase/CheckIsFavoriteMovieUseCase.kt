@@ -1,14 +1,14 @@
 package com.doganur.movieapp.domain.usecase
 
-import com.doganur.movieapp.domain.repository.MainRepository
+import com.doganur.movieapp.domain.repository.MovieRepository
 import javax.inject.Inject
 
 class CheckIsFavoriteMovieUseCase @Inject constructor(
-    private val mainRepository: MainRepository
+    private val movieRepository: MovieRepository
 ) {
 
     suspend operator fun invoke(movieId: Int): Boolean {
-        return mainRepository.getFavoriteMovies().any { it.id == movieId }
+        return movieRepository.getFavoriteMovies().any { it.id == movieId }
     }
 
 }
