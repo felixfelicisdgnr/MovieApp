@@ -19,7 +19,6 @@ fun BasketItem(
     unitPrice: String,
     orderAmount: String,
     totalPrice: String,
-    onDeleteButtonClick: () -> Unit,
     onIncreaseButtonClick: () -> Unit,
     onDecreaseButtonClick: () -> Unit
 ) {
@@ -46,7 +45,6 @@ fun BasketItem(
         )
 
         BasketItemControlSection(
-            onDeleteButtonClick = onDeleteButtonClick,
             onIncreaseButtonClick = onIncreaseButtonClick,
             onDecreaseButtonClick = onDecreaseButtonClick,
             orderAmount = orderAmount,
@@ -65,7 +63,6 @@ fun BasketItemPreview() {
             unitPrice = "50",
             orderAmount = "1",
             totalPrice = "₺ 50",
-            onDeleteButtonClick = {},
             onIncreaseButtonClick = {},
             onDecreaseButtonClick = {}
         )

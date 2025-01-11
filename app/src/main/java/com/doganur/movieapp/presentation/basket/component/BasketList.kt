@@ -17,7 +17,6 @@ import com.doganur.movieapp.presentation.theme.AppTheme
 @Composable
 fun BasketList(
     basketList: List<MovieCartModel>,
-    onDeleteButtonClick: (MovieCartModel) -> Unit = {},
     onIncreaseButtonClick: (MovieCartModel) -> Unit = {},
     onDecreaseButtonClick: (MovieCartModel) -> Unit = {}
 ) {
@@ -37,7 +36,6 @@ fun BasketList(
                 unitPrice = item.priceStr,
                 orderAmount = item.orderAmountStr,
                 totalPrice = item.priceStr,
-                onDeleteButtonClick = { onDeleteButtonClick(item) },
                 onIncreaseButtonClick = { onIncreaseButtonClick(item) },
                 onDecreaseButtonClick = { onDecreaseButtonClick(item) }
             )

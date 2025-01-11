@@ -31,7 +31,7 @@ fun BottomNavigation(
             NavigationBarItem(
                 icon = { Icon(item.icon, contentDescription = item.title) },
                 label = { Text(text = item.title) },
-                selected = currentRoute == item.route::class.java.canonicalName, //cur
+                selected = currentRoute == item.route::class.java.canonicalName,
                 onClick = {
                     navController.navigate(item.route) {
                         popUpTo(navController.graph.startDestinationId)
@@ -53,13 +53,13 @@ sealed class BottomNavItem(
         title = "Ana Sayfa",
         icon = Icons.Default.Home
     )
-    
+
     data object Favorite : BottomNavItem(
         route = Screen.Favorite,
         title = "Favoriler",
         icon = Icons.Default.Favorite
     )
-    
+
     data object Basket : BottomNavItem(
         route = Screen.Basket,
         title = "Sepet",

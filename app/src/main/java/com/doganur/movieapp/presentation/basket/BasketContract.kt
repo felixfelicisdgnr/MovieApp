@@ -9,7 +9,6 @@ object BasketContract {
     )
 
     sealed interface UiAction {
-        data class OnDeleteButtonClick(val movieCartModel: MovieCartModel) : UiAction
         data class OnIncreaseButtonClick(val movieCartModel: MovieCartModel) : UiAction
         data class OnDecreaseButtonClick(val movieCartModel: MovieCartModel) : UiAction
     }

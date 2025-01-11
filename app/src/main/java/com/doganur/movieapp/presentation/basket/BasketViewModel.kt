@@ -39,7 +39,6 @@ class BasketViewModel @Inject constructor(
 
     fun onAction(uiAction: UiAction) {
         when (uiAction) {
-            is UiAction.OnDeleteButtonClick -> deleteMovieCart(uiAction.movieCartModel.cartId)
             is UiAction.OnIncreaseButtonClick -> increaseMovieAmount(uiAction.movieCartModel.cartId)
             is UiAction.OnDecreaseButtonClick -> decreaseMovieAmount(uiAction.movieCartModel.cartId)
         }
@@ -77,11 +76,9 @@ class BasketViewModel @Inject constructor(
         when (result) {
             is Resource.Success -> {
                 getBasket() // Sepeti yenile
-                //emitUiEffect(UiEffect.ShowToast(message = result.data))
             }
 
             is Resource.Fail -> {
-                //emitUiEffect(UiEffect.ShowToast(message = result.message))
             }
         }
     }
@@ -89,8 +86,8 @@ class BasketViewModel @Inject constructor(
     private fun increaseMovieAmount(
         cartId: Int
     ) = viewModelScope.launch {
-        // Mevcut filmi ekle
-        val currentMovie = _uiState.value.list.find { it.cartId == cartId }
+
+        val currentMovie = _uiState.value.list.find { it.cartId == cartId } // Mevcut filmi ekle
 
         currentMovie?.let {
             val result = addBasketUseCase(

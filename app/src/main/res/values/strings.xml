@@ -24,4 +24,8 @@
     <string name="search_hint">Film adıyla arama yapabilirsiniz…</string>
     <string name="total_price">Toplam</string>
     <string name="confirm_basket">Sepeti Onayla</string>
+    <string name="basket">Sepet</string>
+    <string name="favorite_movie">Favori Filmler</string>
+    <string name="no_products_in_cart">Sepetiniz de şu an ürün bulunmamaktadır.</string>
+    <string name="no_favorite_movie">Henüz favori bir film eklemediniz.</string>
 </resources>

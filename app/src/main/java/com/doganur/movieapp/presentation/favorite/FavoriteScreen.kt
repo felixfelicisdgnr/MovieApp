@@ -2,12 +2,16 @@ package com.doganur.movieapp.presentation.favorite
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import com.doganur.movieapp.common.base.components.EmptyScreen
+import androidx.compose.ui.unit.dp
+import com.doganur.movieapp.common.base.components.EmptyFavoriteScreen
 import com.doganur.movieapp.common.base.components.LoadingBar
 import com.doganur.movieapp.presentation.favorite.FavoriteContract.UiAction
 import com.doganur.movieapp.presentation.favorite.FavoriteContract.UiEffect
@@ -25,15 +29,17 @@ fun FavoriteScreen(
 ) {
     Box(
         modifier = Modifier
-            .fillMaxSize(),
-        contentAlignment = Alignment.Center
+            .fillMaxSize()
+            .clip(RoundedCornerShape(8.dp))
+            .padding(vertical = 10.dp),
+        contentAlignment = Alignment.Center,
     ) {
         if (uiState.favoriteList.isEmpty() && !uiState.isLoading) {
-            EmptyScreen()
+            EmptyFavoriteScreen()
         } else {
             FavoriteScreenContent(
                 favoriteList = uiState.favoriteList,
-                onFavoriteClick = {onAction(UiAction.onFavoriteClick(it))}
+                onFavoriteClick = { onAction(UiAction.onFavoriteClick(it)) }
             )
         }
 

@@ -7,6 +7,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -65,12 +68,20 @@ fun SearchTextField(
             colors = TextFieldDefaults.colors(
                 disabledTextColor = Color.Black.copy(alpha = 0.5f),
                 focusedPlaceholderColor = Color.Black,
-                cursorColor = Color.Black.copy(alpha = 0.5f),
+                cursorColor = Color.Black,
+                focusedTextColor = Color.Black,
                 disabledIndicatorColor = Color.Black.copy(alpha = 0.5f),
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 unfocusedTextColor = Color.Transparent
-            )
+            ),
+            trailingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = stringResource(id = R.string.cont_desc_icon_search),
+                    tint = Color.Black
+                )
+            }
         )
 
         SortMenu(
@@ -79,7 +90,6 @@ fun SearchTextField(
             selectedSortType = selectedSortType,
             onSortTypeSelect = onSortTypeSelect
         )
-
     }
 }
 
