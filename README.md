@@ -24,7 +24,7 @@ This project is an application that offers features such as listing, searching, 
 - View movies added to favorites.
 - Add or remove movies from favorites.
 
-### Cart Screen
+### Basket Screen
 
 - Increase or decrease the quantity of items added to the cart.
 - Remove items from the cart.
