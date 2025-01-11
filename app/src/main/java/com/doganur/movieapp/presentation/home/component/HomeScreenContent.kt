@@ -24,7 +24,7 @@ fun HomeScreenContent(
     onSearchValueChange: (String) -> Unit,
     selectedSortType: SortType,
     onSortTypeSelect: (SortType) -> Unit,
-    isLoading : Boolean
+    isLoading: Boolean
 ) {
     Column(
         modifier = Modifier
@@ -36,10 +36,7 @@ fun HomeScreenContent(
 
         SearchTextField(
             searchTextValue = searchTextValue,
-            onSearchValueChange = onSearchValueChange
-        )
-
-        SortMenu(
+            onSearchValueChange = onSearchValueChange,
             selectedSortType = selectedSortType,
             onSortTypeSelect = onSortTypeSelect
         )

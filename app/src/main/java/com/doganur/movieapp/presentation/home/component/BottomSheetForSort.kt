@@ -5,7 +5,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -14,22 +13,27 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.doganur.movieapp.domain.model.SortType
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SortMenu(
+    modifier: Modifier = Modifier,
     selectedSortType: SortType,
     onSortTypeSelect: (SortType) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
 
-    Box {
+    Box(
+        modifier = modifier
+    ) {
         IconButton(onClick = { expanded = true }) {
             Icon(
                 imageVector = Icons.Default.Menu,
-                contentDescription = "Sort"
+                contentDescription = "Sort",
+                tint = Color.Black
             )
         }
 
@@ -37,24 +41,25 @@ fun SortMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false }
         ) {
-            SortType.values().forEach { sortType ->
+            SortType.entries.forEach { sortType ->
                 DropdownMenuItem(
                     text = {
                         Text(
                             text = when (sortType) {
+                                SortType.NEWEST -> "En Yeni"
                                 SortType.PRICE_ASC -> "Fiyat (Artan)"
                                 SortType.PRICE_DESC -> "Fiyat (Azalan)"
-                                SortType.NEWEST -> "En Yeni"
                                 SortType.NAME_ASC -> "İsim (A-Z)"
                                 SortType.NAME_DESC -> "İsim (Z-A)"
                                 SortType.RATE_ASC -> "Puan (Artan)"
-                            }
+                            },
+                            color = if (sortType == selectedSortType) Color.Black else Color.Gray
                         )
                     },
                     onClick = {
                         onSortTypeSelect(sortType)
                         expanded = false
-                    }
+                    },
                 )
             }
         }

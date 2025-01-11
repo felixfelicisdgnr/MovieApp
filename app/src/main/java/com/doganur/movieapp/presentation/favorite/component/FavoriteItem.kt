@@ -26,14 +26,13 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.doganur.movieapp.R
 import com.doganur.movieapp.presentation.theme.BlackColor
-import com.doganur.movieapp.presentation.theme.PrimaryColor
 import com.doganur.movieapp.presentation.theme.UrbanistBoldTextStyle
 
 @Composable
 fun FavoriteItem(
     image: String,
     name: String,
-    isFavorite : Boolean = false,
+    isFavorite: Boolean = false,
     onFavoriteClick: () -> Unit
 ) {
     val iconColor = if (isFavorite) {
@@ -47,15 +46,15 @@ fun FavoriteItem(
             .fillMaxWidth()
             .padding(horizontal = 10.dp)
             .clip(shape = RoundedCornerShape(10.dp))
-            .background(color = PrimaryColor),
+            .background(color = Color.White),
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.Top
     ) {
         AsyncImage(
             modifier = Modifier
                 .size(
-                    width = 140.dp,
-                    height = 170.dp
+                    width = 130.dp,
+                    height = 150.dp
                 )
                 .padding(all = 10.dp)
                 .clip(shape = RoundedCornerShape(10.dp))

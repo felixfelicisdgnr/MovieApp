@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -55,7 +56,7 @@ fun MovieInformationSection(
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(space = 15.dp),
+            horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.Top
         ) {
             AsyncImage(
@@ -70,8 +71,9 @@ fun MovieInformationSection(
                 contentScale = ContentScale.Crop
             )
 
-
             Text(
+                modifier = Modifier
+                    .padding(start = 10.dp),
                 text = name,
                 style = UrbanistBoldTextStyle.copy(
                     fontSize = 24.sp,
@@ -80,10 +82,12 @@ fun MovieInformationSection(
                 )
             )
 
+            Spacer(Modifier.weight(1f))
+
             Icon(
                 painter = painterResource(id = R.drawable.ic_favorite),
                 contentDescription = stringResource(id = R.string.cont_desc_icon_favorite),
-                tint = if(isFavorite) Color.Red else PrimaryColor,
+                tint = if (isFavorite) Color.Red else PrimaryColor,
                 modifier = Modifier
                     .padding(all = 10.dp)
                     .size(40.dp)
