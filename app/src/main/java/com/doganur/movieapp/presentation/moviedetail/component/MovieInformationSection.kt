@@ -89,7 +89,6 @@ fun MovieInformationSection(
                 contentDescription = stringResource(id = R.string.cont_desc_icon_favorite),
                 tint = if (isFavorite) Color.Red else PrimaryColor,
                 modifier = Modifier
-                    .padding(all = 10.dp)
                     .size(40.dp)
                     .clickable {
                         onFavoriteIconClick(

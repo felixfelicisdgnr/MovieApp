@@ -2,7 +2,9 @@ package com.doganur.movieapp.presentation.home.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -55,6 +57,8 @@ fun HomeScreenContent(
                 onAddToBasketButtonClick = onAddToBasketButtonClick,
                 imageClick = imageClick
             )
+
+            Spacer(modifier = Modifier.height(10.dp))
         }
     }
 }

@@ -1,7 +1,9 @@
 package com.doganur.movieapp.presentation.home.component
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -34,6 +36,9 @@ fun MovieList(
                 imageClick = { imageClick(movie) }
             )
         }
+
+        item { Spacer(modifier = Modifier.height(10.dp)) }
+
     }
 }
 

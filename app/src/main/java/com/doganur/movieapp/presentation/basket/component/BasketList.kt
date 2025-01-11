@@ -23,7 +23,7 @@ fun BasketList(
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
-            .height(600.dp),
+            .height(500.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
@@ -35,7 +35,7 @@ fun BasketList(
                 name = item.name,
                 unitPrice = item.priceStr,
                 orderAmount = item.orderAmountStr,
-                totalPrice = item.priceStr,
+                productTotalPrice = item.productTotalPriceStr,
                 onIncreaseButtonClick = { onIncreaseButtonClick(item) },
                 onDecreaseButtonClick = { onDecreaseButtonClick(item) }
             )
@@ -61,7 +61,8 @@ fun BasketListPreview() {
             director = "Director 1",
             description = "Description 1",
             orderAmount = 1,
-            orderAmountStr = "1"
+            orderAmountStr = "1",
+            productTotalPriceStr = "10.00"
         ),
         MovieCartModel(
             cartId = 1,
@@ -75,7 +76,8 @@ fun BasketListPreview() {
             director = "Director 1",
             description = "Description 1",
             orderAmount = 1,
-            orderAmountStr = "1"
+            orderAmountStr = "1",
+            productTotalPriceStr = "10.00"
         ),
         MovieCartModel(
             cartId = 1,
@@ -89,7 +91,8 @@ fun BasketListPreview() {
             director = "Director 1",
             description = "Description 1",
             orderAmount = 1,
-            orderAmountStr = "1"
+            orderAmountStr = "1",
+            productTotalPriceStr = "10.00"
         ),
         MovieCartModel(
             cartId = 1,
@@ -103,7 +106,9 @@ fun BasketListPreview() {
             director = "Director 1",
             description = "Description 1",
             orderAmount = 1,
-            orderAmountStr = "1"
+            orderAmountStr = "1",
+
+            productTotalPriceStr = "10.00"
         ),
         MovieCartModel(
             cartId = 1,
@@ -117,7 +122,8 @@ fun BasketListPreview() {
             director = "Director 1",
             description = "Description 1",
             orderAmount = 1,
-            orderAmountStr = "1"
+            orderAmountStr = "1",
+            productTotalPriceStr = "10.00"
         )
     )
 

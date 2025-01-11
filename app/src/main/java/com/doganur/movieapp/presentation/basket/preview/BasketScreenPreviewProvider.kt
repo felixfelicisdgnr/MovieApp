@@ -31,6 +31,7 @@ class BasketScreenPreviewProvider : PreviewParameterProvider<BasketContract.UiSt
                         description = "Description 1",
                         orderAmount = 1,
                         orderAmountStr = "1",
+                        productTotalPriceStr = "10.00"
                     ),
                     MovieCartModel(
                         cartId = 1,
@@ -45,6 +46,7 @@ class BasketScreenPreviewProvider : PreviewParameterProvider<BasketContract.UiSt
                         description = "Description 1",
                         orderAmount = 1,
                         orderAmountStr = "1",
+                        productTotalPriceStr = "10.00"
                     ),
                     MovieCartModel(
                         cartId = 1,
@@ -59,6 +61,7 @@ class BasketScreenPreviewProvider : PreviewParameterProvider<BasketContract.UiSt
                         description = "Description 1",
                         orderAmount = 1,
                         orderAmountStr = "1",
+                        productTotalPriceStr = "10.00"
                     ),
                 )
             ),

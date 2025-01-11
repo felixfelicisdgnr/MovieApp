@@ -1,6 +1,6 @@
 package com.doganur.movieapp.presentation.home.component
 
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -46,7 +46,7 @@ fun SearchTextField(
             modifier = Modifier
                 .padding(start = 8.dp)
                 .weight(6f)
-                .clickable(onClick = {}),
+                .border(1.dp, Color.Gray, RoundedCornerShape(10.dp)),
             value = searchTextValue,
             onValueChange = { newValue ->
                 onSearchValueChange(newValue)
@@ -66,14 +66,17 @@ fun SearchTextField(
                 imeAction = ImeAction.Search
             ),
             colors = TextFieldDefaults.colors(
-                disabledTextColor = Color.Black.copy(alpha = 0.5f),
-                focusedPlaceholderColor = Color.Black,
+                disabledTextColor = Color.Black,
                 cursorColor = Color.Black,
                 focusedTextColor = Color.Black,
-                disabledIndicatorColor = Color.Black.copy(alpha = 0.5f),
+                disabledIndicatorColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
-                unfocusedTextColor = Color.Transparent
+                unfocusedTextColor = Color.Transparent,
+                focusedContainerColor = Color.Transparent,
+                unfocusedContainerColor = Color.Transparent,
+                unfocusedPlaceholderColor = Color.White,
+                focusedPlaceholderColor = Color.White,
             ),
             trailingIcon = {
                 Icon(

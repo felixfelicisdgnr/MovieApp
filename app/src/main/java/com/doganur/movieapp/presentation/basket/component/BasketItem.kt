@@ -18,14 +18,14 @@ fun BasketItem(
     name: String,
     unitPrice: String,
     orderAmount: String,
-    totalPrice: String,
+    productTotalPrice: String,
     onIncreaseButtonClick: () -> Unit,
     onDecreaseButtonClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(170.dp),
+            .height(150.dp),
         shape = RoundedCornerShape(8.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White,
@@ -48,7 +48,7 @@ fun BasketItem(
             onIncreaseButtonClick = onIncreaseButtonClick,
             onDecreaseButtonClick = onDecreaseButtonClick,
             orderAmount = orderAmount,
-            totalPrice = totalPrice
+            totalPrice = productTotalPrice
         )
     }
 }
@@ -62,7 +62,7 @@ fun BasketItemPreview() {
             name = "Harry Potter",
             unitPrice = "50",
             orderAmount = "1",
-            totalPrice = "₺ 50",
+            productTotalPrice = "₺ 50",
             onIncreaseButtonClick = {},
             onDecreaseButtonClick = {}
         )

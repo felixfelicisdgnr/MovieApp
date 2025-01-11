@@ -29,4 +29,7 @@
     <string name="favorite_movie">Favorite Movies</string>
     <string name="no_products_in_cart">Your cart is currently empty. Start shopping to add items!</string>
     <string name="no_favorite_movie">You haven’t chosen a favorite movie yet. Explore and pick one!</string>
+    <string name="home_page">Home Page</string>
+    <string name="basket_page">Basket</string>
+    <string name="favorite_page">Favorites</string>
 </resources>

@@ -13,5 +13,6 @@ data class MovieCartModel(
     val description: String,
     val orderAmount: Int,
     val orderAmountStr: String,
+    val productTotalPriceStr: String,
     val username: String = "doganur_aydeniz"
 )

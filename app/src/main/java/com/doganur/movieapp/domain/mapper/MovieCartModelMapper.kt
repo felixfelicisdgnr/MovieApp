@@ -18,7 +18,8 @@ fun MovieCartResponse?.mapToMovieCartModelList(): List<MovieCartModel> {
             director = movieCart.director.orEmpty(),
             description = movieCart.description.orEmpty(),
             orderAmount = movieCart.orderAmount.orZero(),
-            orderAmountStr = "${movieCart.orderAmount}"
+            orderAmountStr = "${movieCart.orderAmount}",
+            productTotalPriceStr = "₺ ${movieCart.price.orZero() * movieCart.orderAmount.orZero()}",
         )
     }.orEmpty()
 }
