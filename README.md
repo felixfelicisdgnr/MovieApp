@@ -1,41 +1,107 @@
 # Movie App
 
-Bu proje, film verilerini listeleme, arama, filtreleme ve detaylarını görüntüleme gibi özellikler sunan bir uygulamadır. Uygulama, modern yazılım geliştirme yaklaşımlarını ve araçlarını kullanarak geliştirilmiştir.
+This project is an application that offers features such as listing, searching, filtering, and viewing detailed movie data. It is developed using modern software development approaches and tools.
 
-## Proje Özellikleri
+## Features
 
-Film Listesi: Kullanıcılar, mevcut filmlerin listesini görüntüleyebilir.
+### Movie List
 
-Arama Fonksiyonu: Film adı veya diğer kriterlere göre arama yapılabilir.
+- Users can view a list of available movies.
+- Search movies by name or director.
+- Sort movies by name, rating, or price.
+- Navigate to the detailed page of a selected movie.
+- Offers Dark Mode and Light Mode themes.
+- Supports both Turkish and English languages.
 
-Filtreleme: Tür, yıl veya puan gibi farklı kategorilere göre film filtreleme.
+### Movie Details
 
-Film Detayları: Seçilen film hakkında detaylı bilgilere erişim.
+- View movie details.
+- Place movie orders.
+- Add or remove movies from favorites.
 
-Favorilere Ekleme: Kullanıcılar, favori filmlerini işaretleyebilir.
+### Favorites Screen
 
-Responsive Tasarım: Tüm cihazlarda kullanıcı dostu bir deneyim sunar.
+- View movies added to favorites.
+- Add or remove movies from favorites.
 
-Kullanılan Teknolojiler
+### Cart Screen
 
-Programlama Dili: Kotlin
+- Increase or decrease the quantity of items added to the cart.
+- Remove items from the cart.
 
-Framework: Android Jetpack Compose 
+## Technologies Used
 
-Kütüphaneler: Retrofit, Room, Coil
+- **Jetpack Compose:** Modern and declarative UI building.
+- **Retrofit:** API communication.
+- **Dagger Hilt:** Dependency injection.
+- **Coil:** Image loading.
+- **Clean Architecture:** Application architecture.
+- **Navigation:** Screen navigation.
+- **Coroutines:** Managing data streams.
+- **Room Database:** Local storage for user favorite movies.
 
-Mimari: Clean Architecture (Use Case, State, Event, Effect yaklaşımları ile)
+## Architecture and Approaches
 
-## Mimari ve Yaklaşımlar
+### Clean Architecture
 
-Use Case: Uygulamanın iş kurallarını içerir. Her bir Use Case, belirli bir işlevi gerçekleştirmek üzere tasarlanmıştır ve bağımsız olarak test edilebilir.
+The project follows Clean Architecture principles, providing a modular and scalable structure. The application consists of the following layers:
 
-State: Kullanıcı arayüzünün mevcut durumunu temsil eder. Ekrandaki görsel öğelerin nasıl görünmesi gerektiği bu duruma göre belirlenir.
+- **Domain Layer:**
+  - Contains business rules and Use Cases.
+  - Independent of UI or data layers.
 
-Event: Kullanıcıdan veya sistemden gelen olayları ifade eder. Örneğin, bir butona tıklama veya veri yüklemenin tamamlanması birer Event olabilir.
+- **Data Layer:**
+  - Manages API and database operations.
+  - Uses the Repository design pattern to provide data to the domain layer.
 
-Effect: Kullanıcının dikkatini çeken, genellikle tek seferlik gerçekleşen olaylardır. Örneğin, bir hata mesajı göstermek veya bir ekran geçişi gerçekleştirmek.
+- **UI Layer:**
+  - Builds the user interface.
+  - Manages user experience using State, Event, and Effect patterns.
+
+### Use Case
+
+Each Use Case is designed to perform a specific function and can be tested independently. Examples include:
+
+- Fetching the movie list.
+- Adding a movie to favorites.
+- Removing an item from the cart.
+
+### State, Event, and Effect
+
+- **State:** Represents the current state of the user interface, such as loading status or error messages.
+- **Event:** Represents actions triggered by the user or system, such as button clicks.
+- **Effect:** Represents one-time events that capture the user's attention, such as displaying an error message.
+
+## API
+
+This project uses the following APIs for fetching movie data and managing cart operations:
+
+- **Fetch All Movies:** `http://kasimadalan.pe.hu/movies/getAllMovies.php`
+- **Fetch Cart Movies:** `http://kasimadalan.pe.hu/movies/getMovieCart.php`
+- **Add Movie to Cart:** `http://kasimadalan.pe.hu/movies/insertMovie.php`
+- **Delete Movie from Cart:** `http://kasimadalan.pe.hu/movies/deleteMovie.php`
+- **Fetch Movie Images:** `http://kasimadalan.pe.hu/movies/images`
 
 
-Herhangi bir sorunuz veya öneriniz varsa, lütfen benimle iletişime geçmekten çekinmeyin!
+## Installation
+
+1. **Clone the Project:**
+   ```bash
+   git clone https://github.com/ismailcanvarli/MovieBank.git
+   ```
+2. **Open in Android Studio.**
+3. **Synchronize required dependencies.**
+4. **Run the application:**
+   - Press `Shift + F10` or use the Run button in Android Studio.
+
+## Testing
+
+Follow these steps to test the application:
+
+1. View the list of movies on the home page.
+2. Navigate to the details page of a selected movie.
+3. Add a movie to the cart from the details page. 
+4. View the cart.
+5. Add and view movies in the favorites screen.
+6. Remove items from the cart one by one.
 
