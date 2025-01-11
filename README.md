@@ -1,6 +1,6 @@
 # Movie App
 
-This project is an application that offers features such as listing, searching, filtering, and viewing detailed movie data. It is developed using modern software development approaches and tools.
+This project is an application that offers features such as listing, searching, filtering, viewing detailed movie data, and adding movies to favorites. It is developed using modern software development approaches and tools.
 
 ## Features
 
@@ -77,22 +77,11 @@ Each Use Case is designed to perform a specific function and can be tested indep
 This project uses the following APIs for fetching movie data and managing cart operations:
 
 - **Fetch All Movies:** `http://kasimadalan.pe.hu/movies/getAllMovies.php`
-- **Fetch Cart Movies:** `http://kasimadalan.pe.hu/movies/getMovieCart.php`
-- **Add Movie to Cart:** `http://kasimadalan.pe.hu/movies/insertMovie.php`
-- **Delete Movie from Cart:** `http://kasimadalan.pe.hu/movies/deleteMovie.php`
+- **Fetch Basket Movies:** `http://kasimadalan.pe.hu/movies/getMovieCart.php`
+- **Add Movie to Basket:** `http://kasimadalan.pe.hu/movies/insertMovie.php`
+- **Delete Movie from Basket:** `http://kasimadalan.pe.hu/movies/deleteMovie.php`
 - **Fetch Movie Images:** `http://kasimadalan.pe.hu/movies/images`
 
-
-## Installation
-
-1. **Clone the Project:**
-   ```bash
-   git clone https://github.com/ismailcanvarli/MovieBank.git
-   ```
-2. **Open in Android Studio.**
-3. **Synchronize required dependencies.**
-4. **Run the application:**
-   - Press `Shift + F10` or use the Run button in Android Studio.
 
 ## Testing
 
