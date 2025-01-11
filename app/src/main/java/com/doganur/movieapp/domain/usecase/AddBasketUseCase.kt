@@ -1,11 +1,11 @@
 package com.doganur.movieapp.domain.usecase
 
 import com.doganur.movieapp.common.Resource
-import com.doganur.movieapp.domain.repository.MainRepository
+import com.doganur.movieapp.domain.repository.MovieRepository
 import javax.inject.Inject
 
 class AddBasketUseCase @Inject constructor(
-    private val mainRepository: MainRepository,
+    private val movieRepository: MovieRepository,
 ) {
     suspend operator fun invoke(
         name: String,
@@ -17,7 +17,7 @@ class AddBasketUseCase @Inject constructor(
         director: String,
         description: String,
     ): Resource<String> {
-        return mainRepository.addBasket(
+        return movieRepository.addBasket(
             name = name,
             image = image,
             price = price,

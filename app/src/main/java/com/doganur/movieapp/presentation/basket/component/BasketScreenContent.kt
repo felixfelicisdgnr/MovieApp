@@ -52,7 +52,7 @@ fun BasketScreenContent(
         Spacer(modifier = Modifier.height(10.dp))
 
         TotalBasketPriceSection(
-            totalPrice = basketList.sumOf {
+            totalPrice = "₺" + basketList.sumOf {
                 it.price * it.orderAmount
             }.toString()
         )

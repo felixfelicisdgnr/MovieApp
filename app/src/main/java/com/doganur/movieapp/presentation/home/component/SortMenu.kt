@@ -15,8 +15,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
+import com.doganur.movieapp.R
 import com.doganur.movieapp.domain.model.SortType
+import com.doganur.movieapp.presentation.theme.UrbanistRegularTextStyle
 
 @Composable
 fun SortMenu(
@@ -39,27 +43,32 @@ fun SortMenu(
 
         DropdownMenu(
             expanded = expanded,
-            onDismissRequest = { expanded = false }
+            onDismissRequest = { expanded = false },
+            containerColor = Color.White,
         ) {
             SortType.entries.forEach { sortType ->
                 DropdownMenuItem(
                     text = {
                         Text(
                             text = when (sortType) {
-                                SortType.NEWEST -> "En Yeni"
-                                SortType.PRICE_ASC -> "Fiyat (Artan)"
-                                SortType.PRICE_DESC -> "Fiyat (Azalan)"
-                                SortType.NAME_ASC -> "İsim (A-Z)"
-                                SortType.NAME_DESC -> "İsim (Z-A)"
-                                SortType.RATE_ASC -> "Puan (Artan)"
+                                SortType.NEWEST -> stringResource(id = R.string.sort_newest)
+                                SortType.PRICE_ASC -> stringResource(id = R.string.sort_price_asc)
+                                SortType.PRICE_DESC -> stringResource(id = R.string.sort_price_desc)
+                                SortType.NAME_ASC -> stringResource(id = R.string.sort_name_asc)
+                                SortType.NAME_DESC -> stringResource(id = R.string.sort_name_desc)
+                                SortType.RATE_ASC -> stringResource(id = R.string.sort_rate_asc)
                             },
-                            color = if (sortType == selectedSortType) Color.Black else Color.Gray
+                            color = if (sortType == selectedSortType) Color.Black else Color.Gray,
+                            style = UrbanistRegularTextStyle.copy(
+                                fontSize = 16.sp
+                            )
                         )
                     },
                     onClick = {
                         onSortTypeSelect(sortType)
                         expanded = false
                     },
+
                 )
             }
         }

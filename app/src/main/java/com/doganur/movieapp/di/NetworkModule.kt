@@ -1,7 +1,7 @@
 package com.doganur.movieapp.di
 
 import com.doganur.movieapp.common.Constants
-import com.doganur.movieapp.data.source.remote.MainService
+import com.doganur.movieapp.data.source.remote.MovieService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +22,7 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideMainService(retrofit: Retrofit): MainService {
-        return retrofit.create(MainService::class.java)
+    fun provideMainService(retrofit: Retrofit): MovieService {
+        return retrofit.create(MovieService::class.java)
     }
 }

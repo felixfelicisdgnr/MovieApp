@@ -4,11 +4,11 @@ import com.doganur.movieapp.common.Resource
 import com.doganur.movieapp.common.searchQuery
 import com.doganur.movieapp.domain.model.MovieModel
 import com.doganur.movieapp.domain.model.SortType
-import com.doganur.movieapp.domain.repository.MainRepository
+import com.doganur.movieapp.domain.repository.MovieRepository
 import javax.inject.Inject
 
 class GetMoviesUseCase @Inject constructor(
-    private val mainRepository: MainRepository
+    private val movieRepository: MovieRepository
 ) {
     suspend operator fun invoke(
         searchQuery: String,
@@ -23,7 +23,7 @@ class GetMoviesUseCase @Inject constructor(
         sortQuery: SortType?,
         category: String
     ): Resource<List<MovieModel>> {
-        return when (val result = mainRepository.getAllMovies()) {
+        return when (val result = movieRepository.getAllMovies()) {
             is Resource.Success -> {
                 val filteredName = filterMoviesByName(result.data, searchQuery)
                 val filteredCategory = filterMoviesByCategory(filteredName, category)
